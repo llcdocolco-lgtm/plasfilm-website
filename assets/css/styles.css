@@ -28,12 +28,12 @@
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 2.5rem;
     height: 64px;
-    background: rgba(245,245,242,.95);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--mid);
+    background: rgba(14,14,20,.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,.08);
     transition: box-shadow .3s;
   }
-  nav.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,.08); }
+  nav.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,.35); }
 
   .logo {
     display: flex; align-items: center; gap: .7rem;
@@ -59,16 +59,16 @@
   .logo-text {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 1.5rem; letter-spacing: .1em;
-    color: var(--blue); line-height: 1;
+    color: white; line-height: 1;
   }
-  .logo-sub { font-size: .65rem; color: var(--muted); letter-spacing: .08em; text-transform: uppercase; }
+  .logo-sub { font-size: .65rem; color: rgba(255,255,255,.45); letter-spacing: .08em; text-transform: uppercase; }
 
   .nav-links {
     display: flex; gap: 2rem; list-style: none;
   }
   .nav-links a {
     text-decoration: none; font-size: .9rem; font-weight: 500;
-    color: var(--text); position: relative; padding-bottom: 2px;
+    color: rgba(255,255,255,.8); position: relative; padding-bottom: 2px;
     transition: color .2s;
   }
   .nav-links a::after {
@@ -91,7 +91,7 @@
   .nav-cta:hover { background: var(--red); transform: translateY(-1px); }
 
   .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
-  .hamburger span { width: 24px; height: 2px; background: var(--text); transition: .3s; }
+  .hamburger span { width: 24px; height: 2px; background: rgba(255,255,255,.8); transition: .3s; }
 
   /* ───── HERO ───── */
   #inicio {
@@ -465,8 +465,8 @@
     nav .nav-links.open {
       display: flex; flex-direction: column;
       position: absolute; top: 64px; left: 0; right: 0;
-      background: var(--light); padding: 1.5rem 2rem;
-      border-bottom: 1px solid var(--mid); gap: 1.2rem;
+      background: rgba(14,14,20,.97); padding: 1.5rem 2rem;
+      border-bottom: 1px solid rgba(255,255,255,.08); gap: 1.2rem;
     }
     .hamburger { display: flex; }
     .nav-cta { display: none; }
