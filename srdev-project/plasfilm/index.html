@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plasfilm S.A.S. — Insumos Químicos</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<!-- ══════════ NAV ══════════ -->
+<nav id="navbar">
+  <a href="#inicio" class="logo">
+    <div class="logo-icon">P</div>
+    <div>
+      <div class="logo-text">PLASFILM</div>
+      <div class="logo-sub">S.A.S.</div>
+    </div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#inicio" class="active">Inicio</a></li>
+    <li><a href="#acerca">Acerca de</a></li>
+    <li><a href="#portafolio">Portafolio</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="#reserva">Reserva online</a></li>
+  </ul>
+  <a href="#reserva" class="nav-cta">Reserva ahora</a>
+  <div class="hamburger" id="hamburger" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ══════════ HERO ══════════ -->
+<section id="inicio">
+  <div class="hero-left">
+    <span class="hero-tag">Bogotá, Colombia · Desde 2010</span>
+    <h1 class="hero-h1">INSUMOS<br>PARA<br><em>PLÁSTICO</em><br>&amp; CAUCHO</h1>
+    <p class="hero-desc">Aliados estratégicos de la industria transformadora en Colombia. Proveemos aditivos e insumos de alto rendimiento con asesoría técnica personalizada.</p>
+    <div class="hero-btns">
+      <a href="#portafolio" class="btn-primary">Ver portafolio</a>
+      <a href="#contacto" class="btn-outline">Contáctanos</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-n">+15</div>
+        <div class="stat-l">Años<br>de experiencia</div>
+      </div>
+      <div>
+        <div class="stat-n">+200</div>
+        <div class="stat-l">Clientes<br>activos</div>
+      </div>
+      <div>
+        <div class="stat-n">100%</div>
+        <div class="stat-l">Calidad<br>internacional</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <!-- SVG placeholder representing plastic/chemical industry imagery -->
+    <svg viewBox="0 0 600 520" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;background:#0E0E14;">
+      <defs>
+        <radialGradient id="glow1" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#F05A22" stop-opacity=".25"/>
+          <stop offset="100%" stop-color="transparent"/>
+        </radialGradient>
+        <radialGradient id="glow2" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#1A2FA8" stop-opacity=".3"/>
+          <stop offset="100%" stop-color="transparent"/>
+        </radialGradient>
+      </defs>
+      <!-- Background glow -->
+      <ellipse cx="300" cy="300" rx="280" ry="250" fill="url(#glow2)"/>
+      <ellipse cx="420" cy="180" rx="180" ry="150" fill="url(#glow1)"/>
+
+      <!-- Pellets scattered -->
+      <g opacity=".9">
+        <!-- White pellets -->
+        <ellipse cx="180" cy="340" rx="12" ry="7" fill="#E8E8E4" transform="rotate(-15 180 340)"/>
+        <ellipse cx="145" cy="360" rx="10" ry="6" fill="#D0D0CB" transform="rotate(10 145 360)"/>
+        <ellipse cx="165" cy="375" rx="11" ry="6.5" fill="#E8E8E4" transform="rotate(-5 165 375)"/>
+        <ellipse cx="200" cy="358" rx="10" ry="6" fill="#C8C8C4" transform="rotate(20 200 358)"/>
+        <ellipse cx="125" cy="345" rx="9" ry="5.5" fill="#E0E0DC" transform="rotate(-20 125 345)"/>
+
+        <!-- Orange pellets -->
+        <ellipse cx="280" cy="370" rx="11" ry="6.5" fill="#F05A22" transform="rotate(8 280 370)"/>
+        <ellipse cx="260" cy="355" rx="10" ry="6" fill="#D94E1A" transform="rotate(-12 260 355)"/>
+        <ellipse cx="300" cy="355" rx="9" ry="5.5" fill="#F06A32" transform="rotate(5 300 355)"/>
+
+        <!-- Blue pellets -->
+        <ellipse cx="340" cy="365" rx="11" ry="6.5" fill="#1A2FA8" transform="rotate(-8 340 365)"/>
+        <ellipse cx="360" cy="350" rx="10" ry="6" fill="#2840C8" transform="rotate(15 360 350)"/>
+        <ellipse cx="325" cy="380" rx="9" ry="5.5" fill="#1A2FA8" transform="rotate(-20 325 380)"/>
+
+        <!-- Green pellets -->
+        <ellipse cx="400" cy="370" rx="10" ry="6" fill="#2A8A4A" transform="rotate(5 400 370)"/>
+        <ellipse cx="420" cy="355" rx="9" ry="5.5" fill="#3AAA5A" transform="rotate(-10 420 355)"/>
+        <ellipse cx="385" cy="355" rx="10" ry="6" fill="#2A8A4A" transform="rotate(18 385 355)"/>
+
+        <!-- Black pellets -->
+        <ellipse cx="460" cy="360" rx="10" ry="6" fill="#1C1C1C" transform="rotate(-5 460 360)"/>
+        <ellipse cx="480" cy="345" rx="9" ry="5.5" fill="#2A2A2A" transform="rotate(12 480 345)"/>
+        <ellipse cx="445" cy="345" rx="10" ry="6" fill="#1C1C1C" transform="rotate(-18 445 345)"/>
+      </g>
+
+      <!-- Beaker / flask shapes -->
+      <g opacity=".85">
+        <!-- Flask 1 - blue liquid -->
+        <rect x="420" y="200" width="40" height="80" rx="2" fill="#1A2FA8" opacity=".7"/>
+        <rect x="430" y="185" width="20" height="20" rx="1" fill="#2840B8" opacity=".8"/>
+        <rect x="435" y="178" width="10" height="10" rx="1" fill="#3050C8" opacity=".9"/>
+        <ellipse cx="440" cy="278" rx="20" ry="8" fill="#0E1E88" opacity=".8"/>
+        <!-- Liquid level -->
+        <rect x="421" y="230" width="38" height="49" rx="2" fill="#2840C8" opacity=".5"/>
+        <text x="440" y="222" text-anchor="middle" fill="white" font-size="8" font-weight="bold">TiO₂</text>
+
+        <!-- Flask 2 - amber liquid -->
+        <rect x="485" y="210" width="35" height="70" rx="2" fill="#C8820A" opacity=".7"/>
+        <rect x="493" y="197" width="19" height="16" rx="1" fill="#D89020" opacity=".8"/>
+        <rect x="497" y="190" width="11" height="9" rx="1" fill="#E89A28" opacity=".9"/>
+        <ellipse cx="503" cy="278" rx="17" ry="7" fill="#A86E08" opacity=".8"/>
+        <rect x="486" y="240" width="33" height="39" rx="2" fill="#E89028" opacity=".4"/>
+        <text x="503" y="230" text-anchor="middle" fill="white" font-size="7" font-weight="bold">DOP</text>
+
+        <!-- Bottle - PVC Additives -->
+        <rect x="350" y="175" width="50" height="110" rx="4" fill="#E8E8E4" opacity=".9"/>
+        <rect x="362" y="162" width="26" height="16" rx="2" fill="#D0D0CC"/>
+        <rect x="368" y="156" width="14" height="8" rx="1" fill="#C0C0BC"/>
+        <rect x="355" y="210" width="40" height="50" rx="2" fill="#D8D8D4" opacity=".7"/>
+        <text x="375" y="198" text-anchor="middle" fill="#333" font-size="7" font-weight="bold">PVC</text>
+        <text x="375" y="208" text-anchor="middle" fill="#555" font-size="6">Additives</text>
+      </g>
+
+      <!-- Spool / coil -->
+      <g transform="translate(80 200)" opacity=".8">
+        <ellipse cx="50" cy="20" rx="50" ry="18" fill="#D12E2E"/>
+        <rect x="0" y="20" width="100" height="100" fill="#C02020"/>
+        <ellipse cx="50" cy="120" rx="50" ry="18" fill="#B01A1A"/>
+        <ellipse cx="50" cy="70" rx="30" ry="11" fill="#E83030" opacity=".5"/>
+      </g>
+
+      <!-- Metal scoop silhouette -->
+      <g transform="translate(100 250)" opacity=".7">
+        <path d="M 0 120 Q 10 60 40 20 Q 70 -10 120 10 Q 100 80 60 110 Z" fill="#888" />
+        <path d="M 50 115 L 180 80 Q 200 75 195 65 L 60 100 Z" fill="#999"/>
+      </g>
+
+      <!-- Label texts -->
+      <text x="162" y="330" text-anchor="middle" fill="rgba(255,255,255,.5)" font-size="9" letter-spacing="1">POLÍMEROS</text>
+      <text x="380" y="335" text-anchor="middle" fill="rgba(255,255,255,.5)" font-size="9" letter-spacing="1">ADITIVOS</text>
+
+      <!-- Bottom bar -->
+      <rect x="0" y="490" width="600" height="30" fill="rgba(240,90,34,.15)"/>
+      <text x="300" y="509" text-anchor="middle" fill="rgba(255,255,255,.4)" font-size="10" letter-spacing="3">PLASFILM S.A.S. · BOGOTÁ</text>
+    </svg>
+    <div class="hero-overlay">
+      <span class="hero-badge">Calidad Internacional</span>
+      <div style="display:flex;gap:.5rem;">
+        <span style="width:8px;height:8px;background:var(--orange);border-radius:50%;animation:pulse 1.5s infinite;"></span>
+        <span style="font-size:.75rem;color:rgba(255,255,255,.6);">Disponible ahora</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ TICKER ══════════ -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-inner" id="ticker">
+    <span class="ticker-item">DOP — Plastificante Primario</span>
+    <span class="ticker-dot">◆</span>
+    <span class="ticker-item">Aceite de Soya Epoxidado</span>
+    <span class="ticker-dot">◆</span>
+    <span class="ticker-item">TiO₂ — Dióxido de Titanio</span>
+    <span class="ticker-dot">◆</span>
+    <span class="ticker-item">Estabilizante Bario-Zinc</span>
+    <span class="ticker-dot">◆</span>
+    <span class="ticker-item">Estabilizante de Estaño</span>
+    <span class="ticker-dot">◆</span>
+    <span class="ticker-item">Aditivos PVC</span>
+    <span class="ticker-dot">◆</span>
+    <span class="ticker-item">DOP — Plastificante Primario</span>
+    <span class="ticker-dot">◆</span>
+    <span class="ticker-item">Aceite de Soya Epoxidado</span>
+    <span class="ticker-dot">◆</span>
+    <span class="ticker-item">TiO₂ — Dióxido de Titanio</span>
+    <span class="ticker-dot">◆</span>
+    <span class="ticker-item">Estabilizante Bario-Zinc</span>
+    <span class="ticker-dot">◆</span>
+    <span class="ticker-item">Estabilizante de Estaño</span>
+    <span class="ticker-dot">◆</span>
+    <span class="ticker-item">Aditivos PVC</span>
+    <span class="ticker-dot">◆</span>
+  </div>
+</div>
+
+<!-- ══════════ ACERCA DE ══════════ -->
+<section id="acerca">
+  <div class="section-inner">
+    <div class="about-grid reveal">
+      <div class="about-headline">
+        <div class="big">ACERCA<br>DE</div>
+        <div style="font-size:.8rem;color:var(--muted);margin-top:1rem;letter-spacing:.06em;">PLASFILM S.A.S.</div>
+      </div>
+      <div class="about-body">
+        <div class="section-label">Nuestra historia</div>
+        <h2 class="section-title">Aliados del<br>sector plástico</h2>
+        <p>Plasfilm S.A.S. se consolida en el mercado colombiano como un aliado estratégico de alto nivel para la industria transformadora del plástico y el caucho. Especializada en la comercialización de insumos químicos de vanguardia, la compañía ofrece un portafolio integral que equilibra eficiencia técnica y sostenibilidad.</p>
+        <p>Nuestro catálogo abarca desde plastificantes esenciales como el DOP y el aceite de soya epoxidado, hasta estabilizantes térmicos de máxima potencia como el estaño y el bario-zinc. Con sede en Bogotá, no solo suministramos materias primas de calidad internacional, sino que potenciamos la productividad de nuestros clientes mediante asesoría técnica personalizada.</p>
+        <div class="about-pills">
+          <span class="pill">Plásticos</span>
+          <span class="pill">Caucho</span>
+          <span class="pill">PVC</span>
+          <span class="pill">Asesoría técnica</span>
+          <span class="pill">Bogotá · Nacional</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PORTAFOLIO ══════════ -->
+<section id="portafolio">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">Catálogo</div>
+      <h2 class="section-title">Portafolio de<br>Soluciones Químicas</h2>
+      <p style="color:var(--muted);max-width:560px;line-height:1.7;margin-bottom:2.5rem;">En Plasfilm S.A.S., somos aliados estratégicos de la industria transformadora en Colombia. Nos especializamos en la provisión de aditivos e insumos de alto rendimiento que garantizan la durabilidad, flexibilidad y calidad estética de sus productos finales.</p>
+    </div>
+
+    <div class="filter-bar reveal">
+      <button class="filter-btn active" data-filter="all">Todos</button>
+      <button class="filter-btn" data-filter="plastificante">Plastificantes</button>
+      <button class="filter-btn" data-filter="estabilizante">Estabilizantes</button>
+      <button class="filter-btn" data-filter="pigmento">Pigmentos</button>
+      <button class="filter-btn" data-filter="aditivo">Aditivos</button>
+    </div>
+
+    <div class="products-grid reveal" id="productsGrid">
+      <!-- Cards -->
+      <div class="product-card" data-cat="plastificante"
+           data-name="DOP" data-full="Ftalato de Dioctilo (DOP)"
+           data-desc="Es un aditivo líquido que se le añade a materiales rígidos (como el plástico o el caucho) para volverlos flexibles, elásticos y fáciles de manejar. Es el plastificante primario más utilizado en la industria del PVC."
+           data-specs="Uso: PVC rígido y flexible, cables, pisos vinílicos | Presentación: Tambores 200 kg / IBC 1000 L | Origen: Internacional">
+        <div class="product-icon" style="background:#FFF0E8;">🧪</div>
+        <div class="product-cat">Plastificante</div>
+        <div class="product-name">DOP</div>
+        <div class="product-desc">Ftalato de Dioctilo. Plastificante primario esencial para PVC, confiere flexibilidad y elasticidad a polímeros rígidos.</div>
+      </div>
+
+      <div class="product-card" data-cat="plastificante"
+           data-name="Aceite de Soya Epoxidado"
+           data-full="Aceite de Soya Epoxidado (ESBO)"
+           data-desc="Plastificante secundario de origen vegetal que actúa también como estabilizante térmico. Mejora la resistencia al calor y a la luz UV en formulaciones de PVC, siendo una alternativa más ecológica."
+           data-specs="Uso: PVC flexible, films, recubrimientos | Origen vegetal: sí | Presentación: Tambores 200 kg">
+        <div class="product-icon" style="background:#E8F5E8;">🌿</div>
+        <div class="product-cat">Plastificante</div>
+        <div class="product-name">Aceite de Soya Epox.</div>
+        <div class="product-desc">Plastificante secundario de origen vegetal con función estabilizante. Mejor resistencia UV y térmica.</div>
+      </div>
+
+      <div class="product-card" data-cat="estabilizante"
+           data-name="Estabilizante Bario-Zinc"
+           data-full="Estabilizante Térmico Bario-Zinc (Ba-Zn)"
+           data-desc="Estabilizante de alta eficiencia para formulaciones de PVC flexible. Previene la degradación del polímero durante el procesamiento a altas temperaturas, garantizando color uniforme y durabilidad."
+           data-specs="Uso: PVC flexible, cables, perfiles | Tipo: líquido y sólido | Temperatura de proceso: hasta 200 °C">
+        <div class="product-icon" style="background:#E8EAF6;">⚗️</div>
+        <div class="product-cat">Estabilizante</div>
+        <div class="product-name">Ba-Zn</div>
+        <div class="product-desc">Estabilizante térmico bario-zinc de alta eficiencia para PVC flexible. Previene degradación en procesos de alta temperatura.</div>
+      </div>
+
+      <div class="product-card" data-cat="estabilizante"
+           data-name="Estabilizante de Estaño"
+           data-full="Estabilizante Orgánico de Estaño"
+           data-desc="Estabilizante de máxima potencia utilizado principalmente en PVC rígido transparente. Ofrece excelente claridad óptica y resistencia térmica superior, ideal para aplicaciones de alta exigencia."
+           data-specs="Uso: PVC rígido transparente, tuberías, perfiles | Claridad: alta | Concentración: 1–2 phr">
+        <div class="product-icon" style="background:#FFF8E1;">🔬</div>
+        <div class="product-cat">Estabilizante</div>
+        <div class="product-name">Estaño</div>
+        <div class="product-desc">Estabilizante orgánico de máxima potencia. Ideal para PVC rígido transparente con alta exigencia óptica y térmica.</div>
+      </div>
+
+      <div class="product-card" data-cat="pigmento"
+           data-name="TiO₂"
+           data-full="Dióxido de Titanio (TiO₂)"
+           data-desc="Pigmento blanco de alta pureza que proporciona opacidad, blancura y resistencia a la radiación UV en una gran variedad de materiales poliméricos. Es el pigmento blanco más utilizado en la industria plástica mundial."
+           data-specs="Uso: PVC, polietileno, polipropileno, pinturas | Índice de refracción: 2.73 (rutilo) | Presentación: sacos 25 kg">
+        <div class="product-icon" style="background:#FAFAFA;border:1px solid #eee;">⬜</div>
+        <div class="product-cat">Pigmento</div>
+        <div class="product-name">TiO₂</div>
+        <div class="product-desc">Dióxido de Titanio de alta pureza. Proporciona blancura, opacidad y resistencia UV excepcionales.</div>
+      </div>
+
+      <div class="product-card" data-cat="aditivo"
+           data-name="Aditivos PVC"
+           data-full="Paquete de Aditivos para PVC"
+           data-desc="Paquete completo de aditivos para formulaciones de PVC que incluye lubricantes internos y externos, agentes de impacto, modificadores de procesamiento y antioxidantes. Diseñados para optimizar el proceso de transformación."
+           data-specs="Componentes: lubricantes, antioxidantes, modificadores | Compatibilidad: PVC rígido y flexible | Asesoría técnica: incluida">
+        <div class="product-icon" style="background:#E8F0FE;">🏭</div>
+        <div class="product-cat">Aditivo</div>
+        <div class="product-name">Aditivos PVC</div>
+        <div class="product-desc">Paquete integral de aditivos (lubricantes, antioxidantes, modificadores) para optimizar la transformación de PVC.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT MODAL -->
+<div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true">
+  <div class="modal">
+    <button class="modal-close" id="modalClose" aria-label="Cerrar">✕</button>
+    <div class="modal-cat" id="mCat"></div>
+    <div class="modal-name" id="mName"></div>
+    <p class="modal-body" id="mBody"></p>
+    <dl class="modal-specs" id="mSpecs"></dl>
+    <a href="#contacto" class="btn-primary" style="display:inline-block;text-align:center;" onclick="document.getElementById('modalOverlay').classList.remove('open')">Solicitar cotización →</a>
+  </div>
+</div>
+
+<!-- ══════════ CONTACTO ══════════ -->
+<section id="contacto">
+  <div class="section-inner">
+    <div class="contact-grid reveal">
+      <div class="contact-left">
+        <div class="big-label">PONTE<br>EN<br>CONTAC<br>TO</div>
+        <div class="contact-info">
+          <p><strong>Email</strong><br><a href="mailto:plasfilmsas@gmail.com">plasfilmsas@gmail.com</a></p>
+          <p><strong>Ciudad</strong><br>Bogotá D.C., Colombia</p>
+          <p><strong>Mayoristas</strong><br>Para consultas al mayoreo, contáctenos por correo.</p>
+        </div>
+        <div class="mayoristas">
+          <h3>MAYORISTAS</h3>
+          <p>Para consultas sobre marcas y productos al mayoreo, envíanos un correo a <a href="mailto:plasfilmsas@gmail.com">plasfilmsas@gmail.com</a></p>
+        </div>
+      </div>
+      <div>
+        <div class="section-label" style="--orange:#F05A22;">Formulario</div>
+        <h2 class="section-title" style="color:white;">Escríbenos</h2>
+        <p style="color:rgba(255,255,255,.5);margin-bottom:2rem;font-size:.9rem;">Usa el siguiente formulario y contáctanos para cualquier solicitud especial, consulta, o duda.</p>
+        <div class="contact-form" id="contactForm">
+          <div class="form-row">
+            <div class="field">
+              <label>Nombre</label>
+              <input type="text" placeholder="Tu nombre" id="cNombre">
+            </div>
+            <div class="field">
+              <label>Apellido</label>
+              <input type="text" placeholder="Tu apellido" id="cApellido">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label>Email *</label>
+              <input type="email" placeholder="correo@empresa.com" id="cEmail" required>
+            </div>
+            <div class="field">
+              <label>Teléfono</label>
+              <input type="tel" placeholder="+57 300 000 0000" id="cTel">
+            </div>
+          </div>
+          <div class="field">
+            <label>Mensaje</label>
+            <textarea placeholder="Escribe tu mensaje aquí..." id="cMsg"></textarea>
+          </div>
+          <button class="form-submit" id="contactSubmit">ENVIAR</button>
+          <div class="form-success" id="contactSuccess">✔ ¡Gracias por suscribirte! Te contactaremos pronto.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ RESERVA ONLINE ══════════ -->
+<section id="reserva">
+  <div class="section-inner">
+    <div class="reserva-grid reveal">
+      <div>
+        <div class="section-label">Agenda tu cita</div>
+        <h2 class="section-title">Reserva<br>Online</h2>
+        <p class="reserva-desc">Agenda una reunión con nuestro equipo técnico para recibir asesoría personalizada sobre los insumos más adecuados para tu proceso de producción.</p>
+        <div class="steps">
+          <div class="step active" id="step1">
+            <div class="step-n">01</div>
+            <div>
+              <div class="step-title">Elige producto de interés</div>
+              <div class="step-body">Selecciona el insumo sobre el que necesitas asesoría técnica.</div>
+            </div>
+          </div>
+          <div class="step" id="step2">
+            <div class="step-n">02</div>
+            <div>
+              <div class="step-title">Elige fecha y hora</div>
+              <div class="step-body">Selecciona el día y la franja horaria que más te convenga.</div>
+            </div>
+          </div>
+          <div class="step" id="step3">
+            <div class="step-n">03</div>
+            <div>
+              <div class="step-title">Confirmación inmediata</div>
+              <div class="step-body">Recibirás un correo de confirmación con los detalles de tu cita.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="booking-form">
+        <h3>Agenda tu asesoría</h3>
+        <div style="display:flex;flex-direction:column;gap:1rem;" id="bookingFormFields">
+          <div class="field">
+            <label>Nombre completo *</label>
+            <input type="text" placeholder="Tu nombre" id="bNombre">
+          </div>
+          <div class="field">
+            <label>Empresa</label>
+            <input type="text" placeholder="Nombre de tu empresa" id="bEmpresa">
+          </div>
+          <div class="field">
+            <label>Email *</label>
+            <input type="email" placeholder="correo@empresa.com" id="bEmail">
+          </div>
+          <div class="field">
+            <label>Producto de interés</label>
+            <select id="bProducto">
+              <option value="">— Selecciona —</option>
+              <option>DOP — Plastificante</option>
+              <option>Aceite de Soya Epoxidado</option>
+              <option>Estabilizante Ba-Zn</option>
+              <option>Estabilizante de Estaño</option>
+              <option>TiO₂ — Dióxido de Titanio</option>
+              <option>Aditivos PVC</option>
+              <option>Otro / Consulta general</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label>Fecha preferida</label>
+              <input type="date" id="bFecha">
+            </div>
+            <div class="field">
+              <label>Hora preferida</label>
+              <select id="bHora">
+                <option value="">— Hora —</option>
+                <option>8:00 AM</option>
+                <option>9:00 AM</option>
+                <option>10:00 AM</option>
+                <option>11:00 AM</option>
+                <option>2:00 PM</option>
+                <option>3:00 PM</option>
+                <option>4:00 PM</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label>Comentarios adicionales</label>
+            <textarea placeholder="Cuéntanos brevemente sobre tu proceso o necesidad..." id="bMsg" style="background:white;border:1px solid var(--mid);color:var(--text);padding:.65rem .8rem;min-height:80px;resize:vertical;width:100%;font-family:'DM Sans',sans-serif;"></textarea>
+          </div>
+          <button class="booking-submit" id="bookingSubmit">CONFIRMAR RESERVA</button>
+          <div class="form-success" id="bookingSuccess" style="background:rgba(26,47,168,.08);border:1px solid var(--blue);color:var(--text);">
+            ✔ ¡Reserva confirmada! Te enviaremos los detalles a tu correo.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">PLAS<span>FILM</span></div>
+        <div class="footer-tagline">Insumos químicos para plástico y caucho · Bogotá, Colombia</div>
+        <div class="footer-socials">
+          <a href="#" class="social-btn" aria-label="Facebook">f</a>
+          <a href="#" class="social-btn" aria-label="Instagram">ig</a>
+          <a href="mailto:plasfilmsas@gmail.com" class="social-btn" aria-label="Email">@</a>
+        </div>
+      </div>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="#inicio">Inicio</a>
+        <a href="#acerca">Acerca de</a>
+        <a href="#portafolio">Portafolio</a>
+        <a href="#contacto">Contacto</a>
+        <a href="#reserva">Reserva online</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2025 Plasfilm S.A.S. Todos los derechos reservados.</span>
+      <span class="footer-copy">plasfilmsas@gmail.com</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.4)} }
+</style>
+
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
