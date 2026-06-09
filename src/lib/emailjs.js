@@ -1,21 +1,14 @@
-let _initialized = false;
-
-function getEmailJS() {
-  if (window.emailjs) return Promise.resolve(window.emailjs);
-  return new Promise((resolve, reject) => {
-    const s = document.createElement('script');
-    s.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js';
-    s.onload = () => resolve(window.emailjs);
-    s.onerror = () => reject(new Error('No se pudo cargar EmailJS'));
-    document.head.appendChild(s);
-  });
-}
-
 export async function sendEmail(serviceId, templateId, params) {
-  const ejs = await getEmailJS();
-  if (!_initialized) {
-    ejs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
-    _initialized = true;
-  }
-  return ejs.send(serviceId, templateId, params);
+  const res = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      service_id:      serviceId,
+      template_id:     templateId,
+      user_id:         import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+      template_params: params,
+    }),
+  });
+  if (!res.ok) throw new Error(`EmailJS error: ${res.status}`);
+  return res;
 }
