@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import emailjs from '../../lib/emailjs';
+import { sendEmail } from '../../lib/emailjs';
 import toast from 'react-hot-toast';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
 
@@ -26,7 +26,7 @@ export default function Reserva() {
     if (!form.nombre || !form.email) { toast.error('Nombre y email son requeridos'); return; }
     setSending(true);
     try {
-      await emailjs.send(EMAILJS_SERVICE, EMAILJS_TEMPLATE, {
+      await sendEmail(EMAILJS_SERVICE, EMAILJS_TEMPLATE, {
         from_name:  form.nombre,
         from_email: form.email,
         phone:      form.empresa || 'Reserva Online',
