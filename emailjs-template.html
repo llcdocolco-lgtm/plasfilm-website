@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="margin:0;padding:0;background:#F4F4F0;font-family:'DM Sans',Arial,sans-serif;">
+
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#F4F4F0;padding:40px 20px;">
+    <tr>
+      <td align="center">
+        <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;border-radius:12px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.10);">
+
+          <!-- HEADER -->
+          <tr>
+            <td style="background:#1A1A1A;padding:32px 40px;text-align:center;">
+              <table width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td align="center">
+                    <div style="display:inline-block;">
+                      <span style="display:inline-block;width:44px;height:44px;line-height:44px;border-radius:8px;background:#F05A22;color:#fff;font-size:22px;font-weight:900;text-align:center;vertical-align:middle;">P</span>
+                      <span style="vertical-align:middle;margin-left:12px;">
+                        <span style="display:block;color:#FFFFFF;font-size:22px;font-weight:700;letter-spacing:3px;line-height:1.1;">PLASFILM</span>
+                        <span style="display:block;color:rgba(255,255,255,0.45);font-size:11px;letter-spacing:2px;">S.A.S.</span>
+                      </span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center" style="padding-top:20px;">
+                    <span style="display:inline-block;background:#F05A22;color:#fff;font-size:11px;font-weight:700;letter-spacing:2px;padding:5px 16px;border-radius:20px;text-transform:uppercase;">Nuevo mensaje del sitio web</span>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- BODY -->
+          <tr>
+            <td style="background:#FFFFFF;padding:40px 40px 32px;">
+
+              <p style="margin:0 0 6px;font-size:13px;color:#888;font-weight:500;letter-spacing:1px;text-transform:uppercase;">Recibiste un nuevo mensaje de contacto</p>
+              <h2 style="margin:0 0 28px;font-size:22px;color:#1A1A1A;font-weight:700;">{{from_name}}</h2>
+
+              <!-- DATOS -->
+              <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:28px;">
+
+                <!-- Email -->
+                <tr>
+                  <td style="padding:14px 0;border-bottom:1px solid #F0F0EC;">
+                    <table width="100%" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td width="36">
+                          <div style="width:32px;height:32px;border-radius:8px;background:#FFF0EB;text-align:center;line-height:32px;font-size:15px;">✉️</div>
+                        </td>
+                        <td style="padding-left:12px;">
+                          <div style="font-size:11px;color:#999;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Email</div>
+                          <div style="font-size:15px;color:#1A1A1A;font-weight:500;">
+                            <a href="mailto:{{from_email}}" style="color:#F05A22;text-decoration:none;">{{from_email}}</a>
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+
+                <!-- Teléfono -->
+                <tr>
+                  <td style="padding:14px 0;border-bottom:1px solid #F0F0EC;">
+                    <table width="100%" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td width="36">
+                          <div style="width:32px;height:32px;border-radius:8px;background:#FFF0EB;text-align:center;line-height:32px;font-size:15px;">📞</div>
+                        </td>
+                        <td style="padding-left:12px;">
+                          <div style="font-size:11px;color:#999;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Teléfono</div>
+                          <div style="font-size:15px;color:#1A1A1A;font-weight:500;">{{phone}}</div>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+
+              </table>
+
+              <!-- MENSAJE -->
+              <div style="margin-bottom:8px;">
+                <div style="font-size:11px;color:#999;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;">Mensaje</div>
+                <div style="background:#F7F7F4;border-left:3px solid #F05A22;border-radius:0 8px 8px 0;padding:18px 20px;font-size:15px;color:#333;line-height:1.7;">
+                  {{message}}
+                </div>
+              </div>
+
+            </td>
+          </tr>
+
+          <!-- CTA -->
+          <tr>
+            <td style="background:#FAFAF7;padding:24px 40px;text-align:center;border-top:1px solid #ECECEC;">
+              <a href="mailto:{{from_email}}" style="display:inline-block;background:#F05A22;color:#fff;font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:13px 32px;border-radius:6px;text-decoration:none;">
+                Responder a {{from_name}}
+              </a>
+            </td>
+          </tr>
+
+          <!-- FOOTER -->
+          <tr>
+            <td style="background:#1A1A1A;padding:20px 40px;text-align:center;">
+              <p style="margin:0;font-size:12px;color:rgba(255,255,255,0.35);line-height:1.6;">
+                Este correo fue generado automáticamente desde el formulario de <strong style="color:rgba(255,255,255,0.6);">plasfilm.com.co</strong><br>
+                © 2025 Plasfilm S.A.S. — Insumos Químicos para la Industria
+              </p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>

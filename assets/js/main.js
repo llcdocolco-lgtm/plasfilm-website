@@ -1,5 +1,10 @@
 /* PLASFILM S.A.S. — main.js */
 
+/* ── EmailJS ── */
+const EMAILJS_SERVICE  = 'service_c9vw2x8';
+const EMAILJS_TEMPLATE = 'template_b60mkbq';
+if (typeof emailjs !== 'undefined') emailjs.init('w9QAR-5g0yer9Jm5l');
+
 /* ── NAV scroll effect & active link ── */
 const navbar = document.getElementById('navbar');
 const navLinks = document.querySelectorAll('.nav-links a');
@@ -86,13 +91,33 @@ function closeModal() {
 
 /* ── Contact Form ── */
 document.getElementById('contactSubmit').addEventListener('click', () => {
-  const email = document.getElementById('cEmail').value.trim();
+  const nombre   = document.getElementById('cNombre').value.trim();
+  const apellido = document.getElementById('cApellido').value.trim();
+  const email    = document.getElementById('cEmail').value.trim();
+  const tel      = document.getElementById('cTel').value.trim();
+  const msg      = document.getElementById('cMsg').value.trim();
+
   if (!email) { document.getElementById('cEmail').focus(); return; }
-  document.getElementById('contactSubmit').textContent = 'Enviando...';
-  setTimeout(() => {
-    document.getElementById('contactSubmit').style.display = 'none';
+
+  const btn = document.getElementById('contactSubmit');
+  btn.textContent = 'Enviando...';
+  btn.disabled = true;
+
+  emailjs.send(EMAILJS_SERVICE, EMAILJS_TEMPLATE, {
+    from_name:  (nombre + ' ' + apellido).trim() || 'Sin nombre',
+    from_email: email,
+    phone:      tel || 'No indicado',
+    message:    msg || 'Sin mensaje',
+  })
+  .then(() => {
+    btn.style.display = 'none';
     document.getElementById('contactSuccess').classList.add('show');
-  }, 900);
+  })
+  .catch(() => {
+    btn.textContent = 'ENVIAR';
+    btn.disabled = false;
+    alert('Error al enviar. Intenta de nuevo o escríbenos a plasfilmsas@gmail.com');
+  });
 });
 
 /* ── Booking Form + step indicator ── */
@@ -110,19 +135,38 @@ function updateSteps() {
 });
 
 document.getElementById('bookingSubmit').addEventListener('click', () => {
-  const nombre = document.getElementById('bNombre').value.trim();
-  const email  = document.getElementById('bEmail').value.trim();
+  const nombre   = document.getElementById('bNombre').value.trim();
+  const email    = document.getElementById('bEmail').value.trim();
+  const producto = document.getElementById('bProducto').value;
+  const fecha    = document.getElementById('bFecha').value;
+  const hora     = document.getElementById('bHora').value;
+
   if (!nombre || !email) {
     if (!nombre) document.getElementById('bNombre').focus();
     else document.getElementById('bEmail').focus();
     return;
   }
-  document.getElementById('bookingSubmit').textContent = 'Confirmando...';
-  setTimeout(() => {
-    document.getElementById('bookingSubmit').style.display = 'none';
+
+  const btn = document.getElementById('bookingSubmit');
+  btn.textContent = 'Confirmando...';
+  btn.disabled = true;
+
+  emailjs.send(EMAILJS_SERVICE, EMAILJS_TEMPLATE, {
+    from_name:  nombre,
+    from_email: email,
+    phone:      'Reserva Online',
+    message:    `Producto: ${producto || 'No especificado'}\nFecha: ${fecha || 'No especificada'}\nHora: ${hora || 'No especificada'}`,
+  })
+  .then(() => {
+    btn.style.display = 'none';
     document.getElementById('bookingSuccess').classList.add('show');
     document.getElementById('step3').classList.add('active');
-  }, 900);
+  })
+  .catch(() => {
+    btn.textContent = 'CONFIRMAR RESERVA';
+    btn.disabled = false;
+    alert('Error al enviar. Intenta de nuevo o escríbenos a plasfilmsas@gmail.com');
+  });
 });
 
 /* ── Set min date for booking ── */

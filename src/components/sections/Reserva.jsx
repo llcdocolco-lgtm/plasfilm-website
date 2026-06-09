@@ -1,0 +1,158 @@
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import emailjs from '../../lib/emailjs';
+import toast from 'react-hot-toast';
+import { useScrollReveal } from '../../hooks/useScrollReveal';
+
+const EMAILJS_SERVICE  = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const EMAILJS_KEY      = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+const today = new Date().toISOString().split('T')[0];
+
+export default function Reserva() {
+  const ref = useScrollReveal();
+  const [form, setForm] = useState({ nombre: '', empresa: '', email: '', producto: '', fecha: '', hora: '', msg: '' });
+  const [sending, setSending] = useState(false);
+  const [sent, setSent] = useState(false);
+
+  const set = k => e => {
+    setForm(f => ({ ...f, [k]: e.target.value }));
+  };
+
+  const step2Active = !!form.producto;
+  const step3Active = !!(form.producto && form.fecha && form.hora);
+
+  const submit = async () => {
+    if (!form.nombre || !form.email) { toast.error('Nombre y email son requeridos'); return; }
+    setSending(true);
+    try {
+      await emailjs.send(EMAILJS_SERVICE, EMAILJS_TEMPLATE, {
+        from_name:  form.nombre,
+        from_email: form.email,
+        phone:      form.empresa || 'Reserva Online',
+        message:    `Empresa: ${form.empresa || 'No indicada'}\nProducto: ${form.producto || 'No especificado'}\nFecha: ${form.fecha || 'No especificada'}\nHora: ${form.hora || 'No especificada'}\nComentarios: ${form.msg || 'Ninguno'}`,
+      }, EMAILJS_KEY);
+      setSent(true);
+      toast.success('¡Reserva confirmada!');
+    } catch {
+      toast.error('Error al enviar. Escríbenos a plasfilmsas@gmail.com');
+    } finally {
+      setSending(false);
+    }
+  };
+
+  const inputStyle = { width: '100%', background: 'white', border: '1px solid var(--mid)', color: 'var(--text)', padding: '.65rem .8rem', fontFamily: 'DM Sans, sans-serif', fontSize: '.95rem', outline: 'none', borderRadius: 0, appearance: 'none' };
+  const labelStyle = { display: 'block', fontSize: '.75rem', fontWeight: 700, letterSpacing: '.1em', textTransform: 'uppercase', color: 'var(--muted)', marginBottom: '.4rem' };
+
+  const steps = [
+    { n: '01', title: 'Elige producto de interés', body: 'Selecciona el insumo sobre el que necesitas asesoría técnica.', active: true },
+    { n: '02', title: 'Elige fecha y hora', body: 'Selecciona el día y la franja horaria que más te convenga.', active: step2Active },
+    { n: '03', title: 'Confirmación inmediata', body: 'Recibirás un correo de confirmación con los detalles de tu cita.', active: step3Active },
+  ];
+
+  return (
+    <section id="reserva" style={{ background: 'var(--white)', scrollMarginTop: 64 }}>
+      <div style={{ maxWidth: 1100, margin: '0 auto', padding: '5rem 2rem' }}>
+        <div ref={ref} className="reveal" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'start' }}>
+          <div>
+            <div style={{ fontSize: '.75rem', fontWeight: 700, letterSpacing: '.15em', textTransform: 'uppercase', color: 'var(--orange)', display: 'flex', alignItems: 'center', gap: '.6rem', marginBottom: '1rem' }}>
+              <span style={{ width: 28, height: 2, background: 'var(--orange)', display: 'inline-block' }} />
+              Agenda tu cita
+            </div>
+            <h2 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: 'clamp(2.5rem,5vw,4rem)', lineHeight: 1, letterSpacing: '.02em', marginBottom: '1.5rem' }}>
+              Reserva<br/>Online
+            </h2>
+            <p style={{ color: 'var(--muted)', lineHeight: 1.75, marginBottom: '2rem' }}>
+              Agenda una reunión con nuestro equipo técnico para recibir asesoría personalizada sobre los insumos más adecuados para tu proceso de producción.
+            </p>
+            <div>
+              {steps.map(({ n, title, body, active }, i) => (
+                <div key={n} style={{ display: 'flex', gap: '1.5rem', padding: '1.5rem 0', borderBottom: i < 2 ? '1px solid var(--mid)' : 'none', alignItems: 'flex-start' }}>
+                  <motion.div
+                    animate={{ color: active ? 'var(--orange)' : 'var(--mid)' }}
+                    transition={{ duration: .3 }}
+                    style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '2.5rem', lineHeight: 1, flexShrink: 0, width: 40 }}
+                  >
+                    {n}
+                  </motion.div>
+                  <div>
+                    <div style={{ fontWeight: 700, fontSize: '.95rem', marginBottom: '.3rem' }}>{title}</div>
+                    <div style={{ fontSize: '.85rem', color: 'var(--muted)' }}>{body}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div style={{ background: 'var(--light)', padding: '2.5rem' }}>
+            <h3 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '1.8rem', color: 'var(--blue)', marginBottom: '1.5rem' }}>Agenda tu asesoría</h3>
+            {sent ? (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                style={{ background: 'rgba(26,47,168,.08)', border: '1px solid var(--blue)', color: 'var(--text)', padding: '1rem 1.5rem', fontSize: '.9rem' }}
+              >
+                ✔ ¡Reserva confirmada! Te enviaremos los detalles a tu correo.
+              </motion.div>
+            ) : (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                <div><label style={labelStyle}>Nombre completo *</label><input style={inputStyle} placeholder="Tu nombre" value={form.nombre} onChange={set('nombre')} /></div>
+                <div><label style={labelStyle}>Empresa</label><input style={inputStyle} placeholder="Nombre de tu empresa" value={form.empresa} onChange={set('empresa')} /></div>
+                <div><label style={labelStyle}>Email *</label><input type="email" style={inputStyle} placeholder="correo@empresa.com" value={form.email} onChange={set('email')} /></div>
+                <div>
+                  <label style={labelStyle}>Producto de interés</label>
+                  <select style={inputStyle} value={form.producto} onChange={set('producto')}>
+                    <option value="">— Selecciona —</option>
+                    <option>DOP — Plastificante</option>
+                    <option>Aceite de Soya Epoxidado</option>
+                    <option>Estabilizante Ba-Zn</option>
+                    <option>Estabilizante de Estaño</option>
+                    <option>TiO₂ — Dióxido de Titanio</option>
+                    <option>Aditivos PVC</option>
+                    <option>Otro / Consulta general</option>
+                  </select>
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                  <div><label style={labelStyle}>Fecha preferida</label><input type="date" style={inputStyle} min={today} value={form.fecha} onChange={set('fecha')} /></div>
+                  <div>
+                    <label style={labelStyle}>Hora preferida</label>
+                    <select style={inputStyle} value={form.hora} onChange={set('hora')}>
+                      <option value="">— Hora —</option>
+                      {['8:00 AM','9:00 AM','10:00 AM','11:00 AM','2:00 PM','3:00 PM','4:00 PM'].map(h => <option key={h}>{h}</option>)}
+                    </select>
+                  </div>
+                </div>
+                <div>
+                  <label style={labelStyle}>Comentarios adicionales</label>
+                  <textarea style={{ ...inputStyle, minHeight: 80, resize: 'vertical' }} placeholder="Cuéntanos brevemente sobre tu proceso o necesidad..." value={form.msg} onChange={set('msg')} />
+                </div>
+                <button
+                  onClick={submit}
+                  disabled={sending}
+                  style={{
+                    width: '100%', background: 'var(--blue)', color: 'white',
+                    border: 'none', padding: '1.1rem',
+                    fontFamily: 'DM Sans, sans-serif', fontSize: '1rem', fontWeight: 700,
+                    cursor: 'pointer', marginTop: '1rem', transition: 'background .2s',
+                    opacity: sending ? .7 : 1,
+                  }}
+                  onMouseEnter={e => e.currentTarget.style.background = 'var(--orange)'}
+                  onMouseLeave={e => e.currentTarget.style.background = 'var(--blue)'}
+                >
+                  {sending ? 'CONFIRMANDO...' : 'CONFIRMAR RESERVA'}
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <style>{`
+        @media (max-width: 900px) {
+          #reserva > div > div { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
+    </section>
+  );
+}
