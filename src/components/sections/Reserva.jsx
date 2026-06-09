@@ -6,7 +6,6 @@ import { useScrollReveal } from '../../hooks/useScrollReveal';
 
 const EMAILJS_SERVICE  = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const EMAILJS_TEMPLATE = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-const EMAILJS_KEY      = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 const today = new Date().toISOString().split('T')[0];
 
@@ -32,7 +31,7 @@ export default function Reserva() {
         from_email: form.email,
         phone:      form.empresa || 'Reserva Online',
         message:    `Empresa: ${form.empresa || 'No indicada'}\nProducto: ${form.producto || 'No especificado'}\nFecha: ${form.fecha || 'No especificada'}\nHora: ${form.hora || 'No especificada'}\nComentarios: ${form.msg || 'Ninguno'}`,
-      }, EMAILJS_KEY);
+      });
       setSent(true);
       toast.success('¡Reserva confirmada!');
     } catch {

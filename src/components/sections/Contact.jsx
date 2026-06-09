@@ -5,7 +5,6 @@ import { useScrollReveal } from '../../hooks/useScrollReveal';
 
 const EMAILJS_SERVICE  = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const EMAILJS_TEMPLATE = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-const EMAILJS_KEY      = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 export default function Contact() {
   const ref = useScrollReveal();
@@ -24,7 +23,7 @@ export default function Contact() {
         from_email: form.email,
         phone:      form.tel || 'No indicado',
         message:    form.msg || 'Sin mensaje',
-      }, EMAILJS_KEY);
+      });
       setSent(true);
       toast.success('¡Mensaje enviado!');
     } catch {
