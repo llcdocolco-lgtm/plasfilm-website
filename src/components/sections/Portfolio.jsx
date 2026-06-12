@@ -5,6 +5,7 @@ import FilterBar from '../portfolio/FilterBar';
 import ProductCard from '../portfolio/ProductCard';
 import ProductModal from '../portfolio/ProductModal';
 import products from '../../data/products';
+import AuroraBackground from '../ui/AuroraBackground';
 
 export default function Portfolio() {
   const [filter, setFilter] = useState('all');
@@ -13,8 +14,9 @@ export default function Portfolio() {
   const filtered = filter === 'all' ? products : products.filter(p => p.cat === filter);
 
   return (
-    <section id="portafolio" style={{ background: 'var(--light)', scrollMarginTop: 64 }}>
-      <div style={{ maxWidth: 1100, margin: '0 auto', padding: '5rem 2rem' }}>
+    <section id="portafolio" style={{ background: 'var(--light)', scrollMarginTop: 64, position: 'relative', overflow: 'hidden' }}>
+      <AuroraBackground />
+      <div style={{ maxWidth: 1100, margin: '0 auto', padding: '5rem 2rem', position: 'relative' }}>
         <div ref={ref} className="reveal">
           <div style={{ fontSize: '.75rem', fontWeight: 700, letterSpacing: '.15em', textTransform: 'uppercase', color: 'var(--orange)', display: 'flex', alignItems: 'center', gap: '.6rem', marginBottom: '1rem' }}>
             <span style={{ width: 28, height: 2, background: 'var(--orange)', display: 'inline-block' }} />
@@ -24,11 +26,11 @@ export default function Portfolio() {
             Portafolio de<br/>Soluciones Químicas
           </h2>
           <p style={{ color: 'var(--muted)', maxWidth: 560, lineHeight: 1.7, marginBottom: '2.5rem' }}>
-            En Plasfilm S.A.S., somos aliados estratégicos de la industria transformadora en Colombia. Nos especializamos en la provisión de aditivos e insumos de alto rendimiento que garantizan la durabilidad, flexibilidad y calidad estética de sus productos finales.
+            Insumos químicos de alto rendimiento para la industria plástica colombiana. Cada producto de nuestro portafolio está respaldado por asesoría técnica personalizada para optimizar su proceso productivo.
           </p>
         </div>
         <FilterBar active={filter} onChange={setFilter} />
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5px', background: 'var(--mid)' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2px', background: 'transparent' }}>
           <AnimatePresence mode="popLayout">
             {filtered.map(p => (
               <ProductCard key={p.id} product={p} onClick={setSelected} />

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { sendEmail } from '../../lib/emailjs';
+import AuroraBackground from '../ui/AuroraBackground';
 import toast from 'react-hot-toast';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
 
@@ -51,8 +52,9 @@ export default function Reserva() {
   ];
 
   return (
-    <section id="reserva" style={{ background: 'var(--white)', scrollMarginTop: 64 }}>
-      <div style={{ maxWidth: 1100, margin: '0 auto', padding: '5rem 2rem' }}>
+    <section id="reserva" style={{ background: 'var(--white)', scrollMarginTop: 64, position: 'relative', overflow: 'hidden' }}>
+      <AuroraBackground />
+      <div style={{ maxWidth: 1100, margin: '0 auto', padding: '5rem 2rem', position: 'relative' }}>
         <div ref={ref} className="reveal" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'start' }}>
           <div>
             <div style={{ fontSize: '.75rem', fontWeight: 700, letterSpacing: '.15em', textTransform: 'uppercase', color: 'var(--orange)', display: 'flex', alignItems: 'center', gap: '.6rem', marginBottom: '1rem' }}>
@@ -105,10 +107,11 @@ export default function Reserva() {
                     <option value="">— Selecciona —</option>
                     <option>DOP — Plastificante</option>
                     <option>Aceite de Soya Epoxidado</option>
-                    <option>Estabilizante Ba-Zn</option>
+                    <option>DOA — Dioctil Adipato</option>
+                    <option>Estabilizante Ba/Zn</option>
                     <option>Estabilizante de Estaño</option>
-                    <option>TiO₂ — Dióxido de Titanio</option>
-                    <option>Aditivos PVC</option>
+                    <option>Alcohol Polivinilo (sin antiespumante)</option>
+                    <option>Alcohol Polivinilo (con antiespumante)</option>
                     <option>Otro / Consulta general</option>
                   </select>
                 </div>

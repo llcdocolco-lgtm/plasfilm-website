@@ -1,7 +1,10 @@
 const ITEMS = [
-  'DOP — Plastificante Primario', 'Aceite de Soya Epoxidado',
-  'TiO₂ — Dióxido de Titanio', 'Estabilizante Bario-Zinc',
-  'Estabilizante de Estaño', 'Aditivos PVC',
+  'DOP — Plastificante Primario',
+  'Aceite de Soya Epoxidado',
+  'DOA — Dioctil Adipato',
+  'Estabilizante Bario/Zinc',
+  'Estabilizante de Estaño',
+  'Alcohol Polivinilo',
 ];
 
 function TickerRow({ items, reverse = false, bg = 'var(--orange)', color = 'white', dotColor = 'rgba(255,255,255,.5)' }) {

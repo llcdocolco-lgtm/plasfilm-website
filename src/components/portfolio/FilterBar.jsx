@@ -1,9 +1,8 @@
 const filters = [
-  { key: 'all', label: 'Todos' },
+  { key: 'all',          label: 'Todos' },
   { key: 'plastificante', label: 'Plastificantes' },
   { key: 'estabilizante', label: 'Estabilizantes' },
-  { key: 'pigmento', label: 'Pigmentos' },
-  { key: 'aditivo', label: 'Aditivos' },
+  { key: 'aditivo',      label: 'Aditivos' },
 ];
 
 export default function FilterBar({ active, onChange }) {

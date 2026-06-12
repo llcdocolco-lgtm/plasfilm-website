@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { sendEmail } from '../../lib/emailjs';
+import MolecularBackground from '../ui/MolecularBackground';
 import toast from 'react-hot-toast';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
 
@@ -37,8 +38,9 @@ export default function Contact() {
   const labelStyle = { display: 'block', fontSize: '.75rem', fontWeight: 700, letterSpacing: '.1em', textTransform: 'uppercase', color: 'rgba(255,255,255,.5)', marginBottom: '.4rem' };
 
   return (
-    <section id="contacto" style={{ background: 'var(--dark)', scrollMarginTop: 64 }}>
-      <div style={{ maxWidth: 1100, margin: '0 auto', padding: '5rem 2rem' }}>
+    <section id="contacto" style={{ background: 'var(--dark)', scrollMarginTop: 64, position: 'relative', overflow: 'hidden' }}>
+      <MolecularBackground count={60} linkDist={118} opacity={0.45} />
+      <div style={{ maxWidth: 1100, margin: '0 auto', padding: '5rem 2rem', position: 'relative' }}>
         <div ref={ref} className="reveal" style={{ display: 'grid', gridTemplateColumns: '1fr 1.5fr', gap: '4rem', alignItems: 'start' }}>
           <div>
             <div style={{ border: '2px solid var(--blue)', padding: '2rem', fontFamily: 'Bebas Neue, sans-serif', fontSize: '3.5rem', color: 'var(--blue)', lineHeight: 1, marginBottom: '2rem' }}>

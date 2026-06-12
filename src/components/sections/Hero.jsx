@@ -1,5 +1,32 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
+import MolecularBackground from '../ui/MolecularBackground';
+import useDollarRate from '../../hooks/useDollarRate';
+
+function StatWrapper({ children }) {
+  const [hov, setHov] = useState(false);
+  return (
+    <motion.div
+      animate={{ y: hov ? -5 : 0 }}
+      transition={{ type: 'spring', stiffness: 380, damping: 22 }}
+      style={{ position: 'relative', paddingBottom: '.5rem', cursor: 'default' }}
+      onMouseEnter={() => setHov(true)}
+      onMouseLeave={() => setHov(false)}
+    >
+      {children}
+      <motion.div
+        animate={{ scaleX: hov ? 1 : 0 }}
+        transition={{ duration: .22 }}
+        style={{
+          position: 'absolute', bottom: 0, left: 0,
+          height: 2, width: '100%',
+          background: 'var(--orange)',
+          transformOrigin: 'left',
+        }}
+      />
+    </motion.div>
+  );
+}
 
 function StatCounter({ value, label }) {
   const ref = useRef(null);
@@ -35,9 +62,10 @@ function StatCounter({ value, label }) {
   );
 }
 
-const heroLines = ['INSUMOS', 'PARA', 'PLÁSTICO', '& CAUCHO'];
+const heroLines = ['INSUMOS', 'PARA LA', 'INDUSTRIA', 'PLÁSTICA'];
 
 export default function Hero() {
+  const dollarRate = useDollarRate();
   return (
     <section id="inicio" style={{ minHeight: '100vh', display: 'grid', gridTemplateColumns: '1fr 1fr', paddingTop: 64 }}>
       {/* LEFT */}
@@ -46,18 +74,10 @@ export default function Hero() {
         justifyContent: 'center', padding: '5rem 3.5rem',
         position: 'relative', overflow: 'hidden',
       }}>
-        {/* Dot texture */}
-        <svg style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', opacity: .04, pointerEvents: 'none' }} xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-              <circle cx="2" cy="2" r="1.5" fill="white"/>
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#dots)"/>
-        </svg>
+        <MolecularBackground count={65} linkDist={125} opacity={0.55} />
         {/* Blue diagonal gradient */}
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(26,47,168,.15) 0%, transparent 60%)', pointerEvents: 'none' }} />
-        {/* Watermark */}
+        {/* Watermark inferior — PLASFILM */}
         <motion.div
           initial={{ x: -20, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
@@ -66,9 +86,10 @@ export default function Hero() {
             position: 'absolute', bottom: '-2rem', left: '-1rem',
             fontFamily: 'Bebas Neue, sans-serif', fontSize: '11rem',
             color: 'rgba(255,255,255,.04)', letterSpacing: '.05em',
-            whiteSpace: 'nowrap', pointerEvents: 'none',
+            whiteSpace: 'nowrap', pointerEvents: 'none', userSelect: 'none',
           }}
         >PLASFILM</motion.div>
+
 
         <motion.span
           initial={{ opacity: 0, y: 20 }}
@@ -93,7 +114,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 60 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: .2 + i * .12, duration: .6, ease: 'easeOut' }}
-              style={{ display: 'block', color: line === 'PLÁSTICO' ? 'var(--orange)' : 'white' }}
+              style={{ display: 'block', color: line === 'PLÁSTICA' ? 'var(--orange)' : 'white' }}
             >
               {line}
             </motion.span>
@@ -106,7 +127,7 @@ export default function Hero() {
           transition={{ delay: .75, duration: .6 }}
           style={{ color: 'rgba(255,255,255,.65)', fontSize: '1rem', lineHeight: 1.7, maxWidth: 420, marginBottom: '2.5rem' }}
         >
-          Aliados estratégicos de la industria transformadora en Colombia. Proveemos aditivos e insumos de alto rendimiento con asesoría técnica personalizada.
+          Insumos químicos especializados para la industria plástica en Colombia. Asesoría técnica personalizada en cada solución.
         </motion.p>
 
         <motion.div
@@ -141,21 +162,31 @@ export default function Hero() {
           transition={{ delay: 1.1, duration: .6 }}
           style={{ display: 'flex', gap: '2.5rem', marginTop: '3.5rem', borderTop: '1px solid rgba(255,255,255,.1)', paddingTop: '2rem' }}
         >
-          <StatCounter value="+15" label={"Años\nde experiencia"} />
-          <StatCounter value="+200" label={"Clientes\nactivos"} />
-          <StatCounter value="100%" label={"Calidad\ninternacional"} />
+          <StatWrapper><StatCounter value="+15" label={"Años\nde experiencia"} /></StatWrapper>
+          <StatWrapper><StatCounter value="+200" label={"Clientes\nactivos"} /></StatWrapper>
+          <StatWrapper>
+            <div>
+              <div style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '2.8rem', lineHeight: 1, color: 'var(--orange)' }}>
+                {dollarRate ? `$${dollarRate.toLocaleString('es-CO')}` : '···'}
+              </div>
+              <div style={{ fontSize: '.8rem', color: 'rgba(255,255,255,.5)', textTransform: 'uppercase', letterSpacing: '.08em', marginTop: '.2rem' }}>
+                USD · COP<br/>Tiempo real
+              </div>
+            </div>
+          </StatWrapper>
         </motion.div>
       </div>
 
       {/* RIGHT — SVG */}
-      <div style={{ position: 'relative', overflow: 'hidden', background: 'var(--mid)' }}>
+      <div style={{ position: 'relative', overflow: 'hidden', background: 'var(--dark)' }}>
+        <MolecularBackground count={45} linkDist={110} opacity={0.45} />
         <motion.div
           initial={{ opacity: 0, scale: .95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: .8, ease: 'easeOut' }}
           style={{ width: '100%', height: '100%' }}
         >
-          <svg viewBox="0 0 600 520" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: '100%', display: 'block', background: '#0E0E14' }}>
+          <svg viewBox="0 0 600 520" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: '100%', display: 'block', background: 'transparent' }}>
             <defs>
               <radialGradient id="glow1" cx="50%" cy="50%" r="50%">
                 <stop offset="0%" stopColor="#F05A22" stopOpacity=".25"/>
@@ -219,8 +250,8 @@ export default function Hero() {
             </g>
             <text x="162" y="330" textAnchor="middle" fill="rgba(255,255,255,.5)" fontSize="9" letterSpacing="1">POLÍMEROS</text>
             <text x="380" y="335" textAnchor="middle" fill="rgba(255,255,255,.5)" fontSize="9" letterSpacing="1">ADITIVOS</text>
-            <rect x="0" y="490" width="600" height="30" fill="rgba(240,90,34,.15)"/>
-            <text x="300" y="509" textAnchor="middle" fill="rgba(255,255,255,.4)" fontSize="10" letterSpacing="3">PLASFILM S.A.S. · BOGOTÁ</text>
+            <rect x="0" y="420" width="600" height="30" fill="rgba(240,90,34,.15)"/>
+            <text x="300" y="439" textAnchor="middle" fill="rgba(255,255,255,.4)" fontSize="10" letterSpacing="3">PLASFILM S.A.S. · BOGOTÁ</text>
           </svg>
         </motion.div>
         <div style={{
@@ -229,9 +260,21 @@ export default function Hero() {
           padding: '2rem 2rem 1.5rem',
           display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between',
         }}>
-          <span style={{ background: 'var(--blue)', color: 'white', padding: '.6rem 1.2rem', fontSize: '.85rem', fontWeight: 600 }}>
-            Calidad Internacional
-          </span>
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.6, ease: 'easeOut', delay: .5 }}
+            style={{
+              fontFamily: 'Bebas Neue, sans-serif',
+              fontSize: 'clamp(3rem, 5vw, 6rem)',
+              lineHeight: .82,
+              color: 'rgba(255,255,255,.13)',
+              letterSpacing: '.06em',
+              pointerEvents: 'none',
+              userSelect: 'none',
+              marginLeft: '-.2rem',
+            }}
+          >CALIDAD<br/>INTERNACIONAL</motion.div>
           <div style={{ display: 'flex', gap: '.5rem', alignItems: 'center' }}>
             <span style={{ width: 8, height: 8, background: 'var(--orange)', borderRadius: '50%', animation: 'pulse 1.5s infinite' }} />
             <span style={{ fontSize: '.75rem', color: 'rgba(255,255,255,.6)' }}>Disponible ahora</span>
