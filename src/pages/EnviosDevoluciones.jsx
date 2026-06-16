@@ -1,12 +1,12 @@
 import LegalLayout from '../components/ui/LegalLayout';
 
 const S = {
-  h2: { fontFamily: 'Bebas Neue, sans-serif', fontSize: '1.7rem', color: 'var(--orange)', letterSpacing: '.04em', margin: '2.5rem 0 .8rem' },
-  p: { color: 'var(--muted)', lineHeight: 1.85, fontSize: '.96rem', marginBottom: '.9rem' },
-  ul: { color: 'var(--muted)', lineHeight: 1.85, fontSize: '.96rem', paddingLeft: '1.4rem', marginBottom: '.9rem' },
-  tag: { display: 'inline-block', background: 'rgba(26,47,168,.08)', border: '1px solid rgba(26,47,168,.2)', color: 'var(--blue)', fontSize: '.75rem', fontWeight: 700, letterSpacing: '.08em', textTransform: 'uppercase', padding: '.2rem .7rem', marginBottom: '1.5rem' },
-  divider: { border: 'none', borderTop: '1px solid var(--mid)', margin: '2rem 0' },
-  box: { background: 'rgba(240,90,34,.06)', border: '1px solid rgba(240,90,34,.2)', padding: '1.2rem 1.5rem', marginBottom: '1.2rem' },
+  h2: { fontFamily: 'Montserrat, sans-serif', fontWeight: 800, fontSize: '1.7rem', color: 'var(--color-dark)', margin: '2.5rem 0 .8rem' },
+  p: { fontFamily: 'Inter, sans-serif', color: 'var(--color-dark)', lineHeight: 1.85, fontSize: '.96rem', marginBottom: '.9rem' },
+  ul: { fontFamily: 'Inter, sans-serif', color: 'var(--color-dark)', lineHeight: 1.85, fontSize: '.96rem', paddingLeft: '1.4rem', marginBottom: '.9rem' },
+  tag: { display: 'inline-block', background: 'rgba(26,47,168,0.08)', border: '1px solid rgba(26,47,168,0.2)', color: 'var(--color-primary)', fontFamily: 'Inter, sans-serif', fontSize: '.75rem', fontWeight: 700, letterSpacing: '.08em', textTransform: 'uppercase', padding: '.2rem .7rem', marginBottom: '1.5rem' },
+  divider: { border: 'none', borderTop: '1px solid var(--color-border)', margin: '2rem 0' },
+  box: { background: 'rgba(209,46,46,0.06)', border: '1px solid rgba(209,46,46,0.2)', borderRadius: 6, padding: '1.2rem 1.5rem', marginBottom: '1.2rem' },
 };
 
 export default function EnviosDevoluciones() {
@@ -28,15 +28,15 @@ export default function EnviosDevoluciones() {
 
       <h2 style={S.h2}>2. Tiempos de entrega</h2>
       <div style={S.box}>
-        <p style={{ ...S.p, marginBottom: '.4rem', color: 'var(--text)' }}><strong>Bogotá D.C. y municipios aledaños</strong></p>
+        <p style={{ ...S.p, marginBottom: '.4rem', color: 'var(--color-dark)' }}><strong>Bogotá D.C. y municipios aledaños</strong></p>
         <p style={{ ...S.p, marginBottom: 0 }}>2 a 4 días hábiles a partir de la confirmación del pedido.</p>
       </div>
       <div style={S.box}>
-        <p style={{ ...S.p, marginBottom: '.4rem', color: 'var(--text)' }}><strong>Resto del país — ciudades principales</strong></p>
+        <p style={{ ...S.p, marginBottom: '.4rem', color: 'var(--color-dark)' }}><strong>Resto del país — ciudades principales</strong></p>
         <p style={{ ...S.p, marginBottom: 0 }}>4 a 7 días hábiles (Medellín, Cali, Barranquilla, Bucaramanga, etc.).</p>
       </div>
       <div style={S.box}>
-        <p style={{ ...S.p, marginBottom: '.4rem', color: 'var(--text)' }}><strong>Municipios y zonas apartadas</strong></p>
+        <p style={{ ...S.p, marginBottom: '.4rem', color: 'var(--color-dark)' }}><strong>Municipios y zonas apartadas</strong></p>
         <p style={{ ...S.p, marginBottom: 0 }}>7 a 15 días hábiles. Los tiempos pueden variar por condiciones de acceso vial o disponibilidad del transportador.</p>
       </div>
       <p style={S.p}>Los tiempos indicados son estimativos y pueden verse afectados por situaciones de fuerza mayor, festivos nacionales, restricciones de movilidad o condiciones ajenas a Plasfilm.</p>
@@ -63,7 +63,7 @@ export default function EnviosDevoluciones() {
       <h2 style={S.h2}>5. Proceso de devolución</h2>
       <p style={S.p}>Para iniciar una devolución, el cliente deberá:</p>
       <ul style={S.ul}>
-        <li>Enviar un correo a <a href="mailto:plasfilmsas@gmail.com" style={{ color: 'var(--orange)', textDecoration: 'none' }}>plasfilmsas@gmail.com</a> con asunto <strong>"Solicitud de devolución"</strong></li>
+        <li>Enviar un correo a <a href="mailto:plasfilmsas@gmail.com" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>plasfilmsas@gmail.com</a> con asunto <strong>"Solicitud de devolución"</strong></li>
         <li>Incluir: número de pedido o factura, descripción del inconveniente y evidencia fotográfica</li>
         <li>Aguardar confirmación y autorización escrita de Plasfilm antes de realizar el envío de retorno</li>
         <li>El producto debe ser devuelto en su embalaje original, sin uso adicional y en las mismas condiciones en que fue recibido</li>
@@ -79,7 +79,7 @@ export default function EnviosDevoluciones() {
       </ul>
 
       <h2 style={S.h2}>7. Contacto para envíos y devoluciones</h2>
-      <p style={S.p}>Para cualquier inquietud relacionada con el estado de su pedido, envíos o devoluciones, contáctenos a <a href="mailto:plasfilmsas@gmail.com" style={{ color: 'var(--orange)', textDecoration: 'none' }}>plasfilmsas@gmail.com</a> o a través del formulario de contacto en nuestro sitio web.</p>
+      <p style={S.p}>Para cualquier inquietud relacionada con el estado de su pedido, envíos o devoluciones, contáctenos a <a href="mailto:plasfilmsas@gmail.com" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>plasfilmsas@gmail.com</a> o a través del formulario de contacto en nuestro sitio web.</p>
     </LegalLayout>
   );
 }

@@ -12,8 +12,6 @@ const products = [
       { label: 'Presentación', value: 'Tambores 200 kg / IBC 1000 L' },
       { label: 'Origen', value: 'Internacional' },
     ],
-    icon: '🧪',
-    iconBg: '#FFF0E8',
   },
   {
     id: 'soya',
@@ -28,8 +26,6 @@ const products = [
       { label: 'Origen vegetal', value: 'Sí' },
       { label: 'Presentación', value: 'Tambores 200 kg' },
     ],
-    icon: '🌿',
-    iconBg: '#E8F5E8',
   },
   {
     id: 'doa',
@@ -44,8 +40,6 @@ const products = [
       { label: 'Resistencia al frío', value: 'Alta' },
       { label: 'Presentación', value: 'Tambores 200 kg' },
     ],
-    icon: '❄️',
-    iconBg: '#E8F4FC',
   },
   {
     id: 'bazn',
@@ -60,8 +54,6 @@ const products = [
       { label: 'Tipo', value: 'Líquido y sólido' },
       { label: 'Temperatura de proceso', value: 'Hasta 200 °C' },
     ],
-    icon: '⚗️',
-    iconBg: '#E8EAF6',
   },
   {
     id: 'estano',
@@ -76,8 +68,6 @@ const products = [
       { label: 'Claridad óptica', value: 'Alta' },
       { label: 'Concentración', value: '1–2 phr' },
     ],
-    icon: '🔬',
-    iconBg: '#FFF8E1',
   },
   {
     id: 'pvoh',
@@ -92,8 +82,6 @@ const products = [
       { label: 'Antiespumante', value: 'No incluido' },
       { label: 'Presentación', value: 'Sacos 25 kg' },
     ],
-    icon: '💧',
-    iconBg: '#E3F2FD',
   },
   {
     id: 'pvoh-ae',
@@ -108,8 +96,6 @@ const products = [
       { label: 'Antiespumante', value: 'Incluido' },
       { label: 'Presentación', value: 'Sacos 25 kg' },
     ],
-    icon: '🫧',
-    iconBg: '#E8F5E9',
   },
 ];
 

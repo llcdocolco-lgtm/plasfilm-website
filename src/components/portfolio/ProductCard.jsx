@@ -1,57 +1,59 @@
 import { motion } from 'framer-motion';
+import { Droplets, ShieldCheck, FlaskConical } from 'lucide-react';
+
+const CAT_ICON = {
+  plastificante: Droplets,
+  estabilizante: ShieldCheck,
+  aditivo: FlaskConical,
+};
+
+const CAT_BADGE = {
+  plastificante: { bg: 'rgba(26,47,168,0.08)', color: 'var(--color-primary)', border: '1px solid rgba(26,47,168,0.2)' },
+  estabilizante: { bg: 'rgba(209,46,46,0.08)', color: 'var(--color-secondary)', border: '1px solid rgba(209,46,46,0.2)' },
+  aditivo:       { bg: 'rgba(107,114,128,0.08)', color: 'var(--color-muted)', border: '1px solid var(--color-border)' },
+};
 
 export default function ProductCard({ product, onClick }) {
+  const Icon = CAT_ICON[product.cat] || FlaskConical;
+  const badge = CAT_BADGE[product.cat] || CAT_BADGE.aditivo;
+
   return (
     <motion.div
       layout
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, scale: .95 }}
-      whileHover={{ y: -6, boxShadow: '5px 5px 0 var(--orange)' }}
+      whileHover={{ y: -2, borderColor: 'var(--color-primary)', boxShadow: '0 4px 20px rgba(26,47,168,0.15)' }}
       onClick={() => onClick(product)}
       style={{
-        background: 'rgba(255,255,255,0.68)',
-        backdropFilter: 'blur(14px)',
-        WebkitBackdropFilter: 'blur(14px)',
-        border: '1px solid rgba(255,255,255,0.55)',
-        padding: '2rem',
+        background: 'var(--color-white)',
+        border: '1px solid var(--color-border)',
+        borderRadius: 8,
+        boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
+        padding: '1.5rem',
         position: 'relative', overflow: 'hidden',
         cursor: 'pointer',
-        transition: 'background .25s',
+        transition: 'all 0.2s ease',
       }}
-      onHoverStart={e => { e.target.style && (e.target.style.background = 'rgba(255,255,255,0.82)'); }}
-      onHoverEnd={e => { e.target.style && (e.target.style.background = 'rgba(255,255,255,0.68)'); }}
     >
-      <div style={{
-        position: 'absolute', top: '1.2rem', right: '1.2rem',
-        width: 'clamp(28px, 3.2vw, 38px)', height: 'clamp(28px, 3.2vw, 38px)',
-        borderRadius: '50%',
-        display: 'grid', placeItems: 'center',
-        fontSize: 'clamp(.85rem, 1.5vw, 1.05rem)',
-        background: product.iconBg,
-        flexShrink: 0,
-      }}>
-        {product.icon}
-      </div>
+      <Icon size={24} color={badge.color} style={{ position: 'absolute', top: '1.2rem', right: '1.2rem' }} />
 
       <div style={{ paddingRight: '3rem' }}>
-        <div style={{ fontSize: '.7rem', fontWeight: 700, letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--orange)', marginBottom: '.6rem' }}>
+        <div style={{
+          display: 'inline-block', background: badge.bg, color: badge.color, border: badge.border,
+          borderRadius: 20, padding: '.25rem .75rem',
+          fontFamily: 'Inter, sans-serif', fontSize: '10px', fontWeight: 700, letterSpacing: '.08em', textTransform: 'uppercase',
+          marginBottom: '.8rem',
+        }}>
           {product.catLabel}
         </div>
-        <div style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: 'clamp(1.4rem, 2vw, 1.8rem)', lineHeight: 1.1, color: 'var(--blue)', marginBottom: '.7rem' }}>
+        <div style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 800, fontSize: '16px', lineHeight: 1.2, color: 'var(--color-dark)', marginBottom: '.7rem' }}>
           {product.name}
         </div>
-        <div style={{ fontSize: '.85rem', color: 'var(--muted)', lineHeight: 1.6 }}>
+        <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '.85rem', color: 'var(--color-muted)', lineHeight: 1.6 }}>
           {product.desc}
         </div>
       </div>
-
-      <motion.div
-        initial={{ width: 0 }}
-        whileHover={{ width: '100%' }}
-        style={{ position: 'absolute', bottom: 0, left: 0, height: 3, background: 'var(--orange)' }}
-        transition={{ duration: .3 }}
-      />
     </motion.div>
   );
 }

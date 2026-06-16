@@ -38,7 +38,7 @@ function Home() {
 export default function App() {
   return (
     <>
-      <Toaster position="top-right" toastOptions={{ style: { fontFamily: 'DM Sans, sans-serif' } }} />
+      <Toaster position="top-right" toastOptions={{ style: { fontFamily: 'Inter, sans-serif' } }} />
       <ScrollProgress />
       <ScrollToTop />
       <Routes>

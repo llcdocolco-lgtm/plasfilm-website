@@ -1,16 +1,19 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import MolecularBackground from '../ui/MolecularBackground';
-import PolymerScene from '../three/PolymerScene';
 import useDollarRate from '../../hooks/useDollarRate';
 
-function StatWrapper({ children }) {
+function StatWrapper({ children, separator = false }) {
   const [hov, setHov] = useState(false);
   return (
     <motion.div
       animate={{ y: hov ? -5 : 0 }}
       transition={{ type: 'spring', stiffness: 380, damping: 22 }}
-      style={{ position: 'relative', paddingBottom: '.5rem', cursor: 'default' }}
+      style={{
+        position: 'relative', paddingBottom: '.5rem', cursor: 'default',
+        borderLeft: separator ? '2px solid rgba(255,255,255,0.2)' : 'none',
+        paddingLeft: separator ? '2.5rem' : 0,
+      }}
       onMouseEnter={() => setHov(true)}
       onMouseLeave={() => setHov(false)}
     >
@@ -19,9 +22,9 @@ function StatWrapper({ children }) {
         animate={{ scaleX: hov ? 1 : 0 }}
         transition={{ duration: .22 }}
         style={{
-          position: 'absolute', bottom: 0, left: 0,
-          height: 2, width: '100%',
-          background: 'var(--orange)',
+          position: 'absolute', bottom: 0, left: separator ? '2.5rem' : 0, right: 0,
+          height: 2,
+          background: 'white',
           transformOrigin: 'left',
         }}
       />
@@ -53,10 +56,10 @@ function StatCounter({ value, label }) {
 
   return (
     <div ref={ref}>
-      <div style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '2.8rem', lineHeight: 1, color: 'var(--orange)' }}>
+      <div style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 800, fontSize: '2.4rem', lineHeight: 1, color: 'white' }}>
         {prefix}{count}{suffix}
       </div>
-      <div style={{ fontSize: '.8rem', color: 'rgba(255,255,255,.5)', textTransform: 'uppercase', letterSpacing: '.08em', marginTop: '.2rem' }}
+      <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '.8rem', color: 'rgba(255,255,255,0.6)', textTransform: 'uppercase', letterSpacing: '.08em', marginTop: '.3rem' }}
         dangerouslySetInnerHTML={{ __html: label.replace('\n', '<br/>') }}
       />
     </div>
@@ -68,54 +71,45 @@ const heroLines = ['INSUMOS', 'PARA LA', 'INDUSTRIA', 'PLÁSTICA'];
 export default function Hero() {
   const dollarRate = useDollarRate();
   return (
-    <section id="inicio" style={{ minHeight: '100vh', display: 'grid', gridTemplateColumns: '1fr 1fr', paddingTop: 64 }}>
-      {/* LEFT */}
-      <div style={{
-        background: 'var(--dark)', display: 'flex', flexDirection: 'column',
-        justifyContent: 'center', padding: '5rem 3.5rem',
-        position: 'relative', overflow: 'hidden',
-      }}>
-        <MolecularBackground count={65} linkDist={125} opacity={0.55} />
-        {/* Blue diagonal gradient */}
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(26,47,168,.15) 0%, transparent 60%)', pointerEvents: 'none' }} />
-        {/* Watermark inferior — PLASFILM */}
-        <motion.div
-          initial={{ x: -20, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 1.2, ease: 'easeOut' }}
-          style={{
-            position: 'absolute', bottom: '-2rem', left: '-1rem',
-            fontFamily: 'Bebas Neue, sans-serif', fontSize: '11rem',
-            color: 'rgba(255,255,255,.04)', letterSpacing: '.05em',
-            whiteSpace: 'nowrap', pointerEvents: 'none', userSelect: 'none',
-          }}
-        >PLASFILM</motion.div>
+    <section id="inicio" style={{
+      minHeight: '100vh',
+      display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+      background: 'var(--color-primary)', color: 'var(--color-white)', position: 'relative', overflow: 'hidden',
+    }}>
+      <MolecularBackground count={70} linkDist={120} opacity={0.3} />
 
+      {/* Estado del sistema */}
+      <div style={{ position: 'absolute', top: '1.5rem', right: '2rem', display: 'flex', gap: '.5rem', alignItems: 'center' }}>
+        <span style={{ width: 8, height: 8, background: 'white', borderRadius: '50%', animation: 'pulse 1.5s infinite' }} />
+        <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '.75rem', color: 'rgba(255,255,255,0.6)' }}>Disponible ahora</span>
+      </div>
 
+      <div className="hero-left" style={{ maxWidth: 760, padding: '5rem 2rem', textAlign: 'center', position: 'relative' }}>
         <motion.span
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: .1, duration: .6 }}
           style={{
             display: 'inline-flex', alignItems: 'center', gap: '.5rem',
-            background: 'var(--orange)', color: 'white',
-            fontSize: '.75rem', fontWeight: 700, letterSpacing: '.12em',
-            textTransform: 'uppercase', padding: '.3rem .8rem',
-            marginBottom: '1.5rem', width: 'fit-content',
+            border: '1px solid rgba(255,255,255,0.3)', background: 'rgba(255,255,255,0.1)', color: 'white',
+            fontFamily: 'Inter, sans-serif',
+            fontSize: '12px', fontWeight: 500, letterSpacing: '.06em',
+            padding: '.3rem .8rem',
+            marginBottom: '1.5rem',
           }}
         >
-          <span style={{ width: 8, height: 8, background: 'rgba(255,255,255,.7)', borderRadius: '50%', animation: 'pulse 1.5s infinite', flexShrink: 0 }} />
+          <span style={{ width: 8, height: 8, background: 'white', borderRadius: '50%', animation: 'pulse 1.5s infinite', flexShrink: 0 }} />
           Bogotá, Colombia · Desde 2010
         </motion.span>
 
-        <h1 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: 'clamp(3rem,6vw,5.5rem)', lineHeight: .95, color: 'white', letterSpacing: '.02em', marginBottom: '1.5rem' }}>
+        <h1 style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 800, fontSize: 'clamp(2.5rem,5vw,4rem)', lineHeight: 1.1, color: 'white', marginBottom: '1.5rem' }}>
           {heroLines.map((line, i) => (
             <motion.span
               key={line}
               initial={{ opacity: 0, y: 60 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: .2 + i * .12, duration: .6, ease: 'easeOut' }}
-              style={{ display: 'block', color: line === 'PLÁSTICA' ? 'var(--orange)' : 'white' }}
+              style={{ display: 'block' }}
             >
               {line}
             </motion.span>
@@ -126,7 +120,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: .75, duration: .6 }}
-          style={{ color: 'rgba(255,255,255,.65)', fontSize: '1rem', lineHeight: 1.7, maxWidth: 420, marginBottom: '2.5rem' }}
+          style={{ fontFamily: 'Inter, sans-serif', color: 'rgba(255,255,255,0.8)', fontSize: '1.05rem', lineHeight: 1.7, maxWidth: 480, margin: '0 auto 2.5rem' }}
         >
           Insumos químicos especializados para la industria plástica en Colombia. Asesoría técnica personalizada en cada solución.
         </motion.p>
@@ -135,42 +129,43 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: .9, duration: .5 }}
-          style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}
+          style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center' }}
         >
           <a href="#portafolio" style={{
-            background: 'var(--orange)', color: 'white', border: 'none',
-            padding: '.9rem 2rem', fontFamily: 'DM Sans, sans-serif',
-            fontSize: '.95rem', fontWeight: 700, letterSpacing: '.04em',
+            background: 'white', color: 'var(--color-primary)', border: 'none',
+            padding: '.9rem 2rem', fontFamily: 'Inter, sans-serif',
+            fontSize: '.95rem', fontWeight: 700, letterSpacing: '.02em',
             textDecoration: 'none', transition: 'background .2s, transform .15s',
           }}
-            onMouseEnter={e => { e.currentTarget.style.background = 'var(--red)'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
-            onMouseLeave={e => { e.currentTarget.style.background = 'var(--orange)'; e.currentTarget.style.transform = 'none'; }}
+            onMouseEnter={e => { e.currentTarget.style.background = 'var(--color-bg-light)'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
+            onMouseLeave={e => { e.currentTarget.style.background = 'white'; e.currentTarget.style.transform = 'none'; }}
           >Ver portafolio</a>
           <a href="#contacto" style={{
-            border: '1.5px solid rgba(255,255,255,.35)', color: 'white',
-            padding: '.9rem 2rem', fontFamily: 'DM Sans, sans-serif',
+            border: '2px solid rgba(255,255,255,0.5)', color: 'white',
+            padding: '.9rem 2rem', fontFamily: 'Inter, sans-serif',
             fontSize: '.95rem', fontWeight: 500, background: 'transparent',
             textDecoration: 'none', transition: 'border-color .2s, background .2s',
           }}
-            onMouseEnter={e => { e.currentTarget.style.borderColor = 'white'; e.currentTarget.style.background = 'rgba(255,255,255,.05)'; }}
-            onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,.35)'; e.currentTarget.style.background = 'transparent'; }}
+            onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; }}
+            onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; }}
           >Contáctanos</a>
         </motion.div>
 
         <motion.div
+          className="hero-stats"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.1, duration: .6 }}
-          style={{ display: 'flex', gap: '2.5rem', marginTop: '3.5rem', borderTop: '1px solid rgba(255,255,255,.1)', paddingTop: '2rem' }}
+          style={{ display: 'flex', gap: '0', marginTop: '3.5rem', borderTop: '1px solid rgba(255,255,255,0.2)', paddingTop: '2rem', justifyContent: 'center' }}
         >
           <StatWrapper><StatCounter value="+15" label={"Años\nde experiencia"} /></StatWrapper>
-          <StatWrapper><StatCounter value="+200" label={"Clientes\nactivos"} /></StatWrapper>
-          <StatWrapper>
+          <StatWrapper separator><StatCounter value="+200" label={"Clientes\nactivos"} /></StatWrapper>
+          <StatWrapper separator>
             <div>
-              <div style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '2.8rem', lineHeight: 1, color: 'var(--orange)' }}>
+              <div style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 800, fontSize: '2.4rem', lineHeight: 1, color: 'white' }}>
                 {dollarRate ? `$${dollarRate.toLocaleString('es-CO')}` : '···'}
               </div>
-              <div style={{ fontSize: '.8rem', color: 'rgba(255,255,255,.5)', textTransform: 'uppercase', letterSpacing: '.08em', marginTop: '.2rem' }}>
+              <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '.8rem', color: 'rgba(255,255,255,0.6)', textTransform: 'uppercase', letterSpacing: '.08em', marginTop: '.3rem' }}>
                 USD · COP<br/>Tiempo real
               </div>
             </div>
@@ -178,37 +173,15 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* RIGHT — 3D */}
-      <div style={{ position: 'relative', overflow: 'hidden', background: 'var(--dark)' }}>
-        <MolecularBackground count={45} linkDist={110} opacity={0.45} />
-        <motion.div
-          initial={{ opacity: 0, scale: .95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: .8, ease: 'easeOut' }}
-          style={{ position: 'absolute', inset: 0 }}
-        >
-          <PolymerScene />
-        </motion.div>
-        <div style={{
-          position: 'absolute', bottom: 0, left: 0, right: 0,
-          background: 'linear-gradient(to top, rgba(14,14,20,.55) 0%, transparent 60%)',
-          padding: '2rem 2rem 1.5rem',
-          display: 'flex', alignItems: 'flex-end', justifyContent: 'flex-end',
-          pointerEvents: 'none',
-        }}>
-          <div style={{ display: 'flex', gap: '.5rem', alignItems: 'center' }}>
-            <span style={{ width: 8, height: 8, background: 'var(--orange)', borderRadius: '50%', animation: 'pulse 1.5s infinite' }} />
-            <span style={{ fontSize: '.75rem', color: 'rgba(255,255,255,.6)' }}>Disponible ahora</span>
-          </div>
-        </div>
-
-        <style>{`
-          @media (max-width: 900px) {
-            #inicio { grid-template-columns: 1fr !important; min-height: auto !important; }
-            #inicio > div:last-child { height: 55vw; }
+      <style>{`
+        @media (max-width: 480px) {
+          .hero-stats { flex-direction: column; gap: 1.5rem !important; }
+          .hero-stats > div {
+            border-left: none !important;
+            padding-left: 0 !important;
           }
-        `}</style>
-      </div>
+        }
+      `}</style>
     </section>
   );
 }

@@ -1,28 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&family=JetBrains+Mono:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&family=Inter:wght@400;500&display=swap');
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --red:    #D12E2E;
-  --blue:   #1A2FA8;
-  --orange: #F05A22;
-  --dark:   #0E0E14;
-  --light:  #F5F5F2;
-  --mid:    #E8E8E4;
-  --text:   #1C1C28;
-  --muted:  #6B6B7A;
-  --white:  #ffffff;
+  --color-primary:    #1A2FA8;
+  --color-secondary:  #D12E2E;
+  --color-dark:       #15206B;
+
+  --color-bg-light:   #F5F5F2;
+  --color-white:      #FFFFFF;
+
+  --color-border:     #D8D8D8;
+  --color-muted:      #6B7280;
+  --color-primary-hover: #142380;
 }
 
 html { scroll-behavior: smooth; }
 body {
-  font-family: 'DM Sans', sans-serif;
-  background: var(--light);
-  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  color: var(--color-dark);
+  background: var(--color-white);
   overflow-x: hidden;
 }
-
-.mono { font-family: 'JetBrains Mono', monospace; }
 
 @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.4)} }
 @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
@@ -36,24 +35,6 @@ body {
 .reveal { opacity: 0; transform: translateY(28px); transition: opacity .65s, transform .65s; }
 .reveal.in { opacity: 1; transform: none; }
 
-@media (max-width: 900px) {
-  #inicio { grid-template-columns: 1fr !important; min-height: auto !important; }
-  #inicio > div:last-child { height: 55vw; }
-}
 @media (max-width: 600px) {
   .hero-left { padding: 3rem 1.5rem !important; }
-}
-
-/* Hover text darkening — white sections */
-#acerca p, #portafolio p, #reserva p {
-  transition: color .25s ease;
-}
-#acerca p:hover, #portafolio p:hover, #reserva p:hover {
-  color: var(--text) !important;
-}
-#acerca h2, #portafolio h2, #reserva h2 {
-  transition: color .25s ease;
-}
-#acerca h2:hover, #portafolio h2:hover, #reserva h2:hover {
-  color: #000 !important;
 }

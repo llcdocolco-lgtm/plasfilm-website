@@ -1,8 +1,9 @@
 import { useState } from 'react';
+import { Mail, MapPin, Users } from 'lucide-react';
 import { sendEmail } from '../../lib/emailjs';
-import MolecularBackground from '../ui/MolecularBackground';
 import toast from 'react-hot-toast';
 import { useScrollReveal } from '../../hooks/useScrollReveal';
+import { SmokeBackground } from '../ui/SmokeBackground';
 
 const EMAILJS_SERVICE  = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const EMAILJS_TEMPLATE = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
@@ -34,68 +35,78 @@ export default function Contact() {
     }
   };
 
-  const fieldStyle = { background: 'transparent', color: 'white', padding: '.6rem 0', fontFamily: 'DM Sans, sans-serif', fontSize: '.95rem', outline: 'none', width: '100%', border: 'none', borderBottom: '1px solid rgba(255,255,255,.2)' };
-  const labelStyle = { display: 'block', fontSize: '.75rem', fontWeight: 700, letterSpacing: '.1em', textTransform: 'uppercase', color: 'rgba(255,255,255,.5)', marginBottom: '.4rem' };
+  const fieldStyle = { background: 'var(--color-white)', color: 'var(--color-dark)', padding: '.6rem .8rem', fontFamily: 'Inter, sans-serif', fontSize: '.95rem', outline: 'none', width: '100%', border: '1px solid var(--color-border)', borderRadius: 6, transition: 'border-color .2s' };
+  const labelStyle = { display: 'block', fontFamily: 'Inter, sans-serif', fontSize: '.75rem', fontWeight: 700, letterSpacing: '.1em', textTransform: 'uppercase', color: 'var(--color-muted)', marginBottom: '.4rem' };
+  const focusField = e => { e.currentTarget.style.borderColor = 'var(--color-primary)'; };
+  const blurField = e => { e.currentTarget.style.borderColor = 'var(--color-border)'; };
+
+  const infoItems = [
+    { icon: Mail, label: 'Email', value: <a href="mailto:plasfilmsas@gmail.com" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>plasfilmsas@gmail.com</a> },
+    { icon: MapPin, label: 'Ciudad', value: 'Bogotá D.C., Colombia' },
+    { icon: MapPin, label: 'Dirección', value: 'Calle 20 C No 42-60 int 3' },
+    { icon: Users, label: 'Mayoristas', value: 'Para consultas al mayoreo, contáctenos por correo.' },
+  ];
 
   return (
-    <section id="contacto" style={{ background: 'var(--dark)', scrollMarginTop: 64, position: 'relative', overflow: 'hidden' }}>
-      <MolecularBackground count={60} linkDist={118} opacity={0.45} />
-      <div style={{ maxWidth: 1100, margin: '0 auto', padding: '5rem 2rem', position: 'relative' }}>
-        <div ref={ref} className="reveal" style={{ display: 'grid', gridTemplateColumns: '1fr 1.5fr', gap: '4rem', alignItems: 'start' }}>
+    <section id="contacto" style={{ background: 'var(--color-white)', scrollMarginTop: 64, position: 'relative', overflow: 'hidden' }}>
+      <div style={{ position: 'absolute', inset: 0, zIndex: 0, opacity: 0.28, pointerEvents: 'none' }}>
+        <SmokeBackground smokeColor="#1A2FA8" />
+      </div>
+      <div style={{ maxWidth: 1100, margin: '0 auto', padding: '5rem 2rem', position: 'relative', zIndex: 1 }}>
+        <div ref={ref} className="reveal contact-inner" style={{ display: 'grid', gridTemplateColumns: '1fr 1.5fr', gap: '4rem', alignItems: 'start' }}>
           <div>
-            <div style={{ border: '2px solid var(--blue)', padding: '2rem', fontFamily: 'Bebas Neue, sans-serif', fontSize: '3.5rem', color: 'var(--blue)', lineHeight: 1, marginBottom: '2rem' }}>
-              PONTE<br/>EN<br/>CONTAC<br/>TO
-            </div>
-            <div style={{ color: 'rgba(255,255,255,.6)', fontSize: '.9rem', lineHeight: 2 }}>
-              <p><strong style={{ color: 'white', fontWeight: 600 }}>Email</strong><br/><a href="mailto:plasfilmsas@gmail.com" style={{ color: 'var(--orange)', textDecoration: 'none' }}>plasfilmsas@gmail.com</a></p>
-              <p><strong style={{ color: 'white', fontWeight: 600 }}>Ciudad</strong><br/>Bogotá D.C., Colombia</p>
-              <p><strong style={{ color: 'white', fontWeight: 600 }}>Dirección</strong><br/>Calle 20 C No 42-60 int 3</p>
-              <p><strong style={{ color: 'white', fontWeight: 600 }}>Mayoristas</strong><br/>Para consultas al mayoreo, contáctenos por correo.</p>
-            </div>
-            <div style={{ marginTop: '3rem', borderTop: '1px solid rgba(255,255,255,.1)', paddingTop: '2rem' }}>
-              <h3 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: '2rem', color: 'var(--blue)', letterSpacing: '.05em', marginBottom: '.6rem' }}>MAYORISTAS</h3>
-              <p style={{ color: 'rgba(255,255,255,.55)', fontSize: '.9rem' }}>
-                Para consultas sobre marcas y productos al mayoreo, envíanos un correo a <a href="mailto:plasfilmsas@gmail.com" style={{ color: 'var(--orange)', textDecoration: 'none' }}>plasfilmsas@gmail.com</a>
-              </p>
+            <h2 style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 800, fontSize: 'clamp(2rem,4vw,3rem)', color: 'var(--color-dark)', lineHeight: 1.1, marginBottom: '2rem' }}>
+              Ponte en<br/>contacto
+            </h2>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
+              {infoItems.map(({ icon: Icon, label, value }) => (
+                <div key={label} style={{ display: 'flex', gap: '.9rem', alignItems: 'flex-start' }}>
+                  <Icon size={20} color="var(--color-primary)" style={{ flexShrink: 0, marginTop: 2 }} />
+                  <div>
+                    <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600, fontSize: '.9rem', color: 'var(--color-dark)' }}>{label}</div>
+                    <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '.9rem', color: 'var(--color-muted)' }}>{value}</div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
 
           <div>
-            <div style={{ fontSize: '.75rem', fontWeight: 700, letterSpacing: '.15em', textTransform: 'uppercase', color: 'var(--orange)', display: 'flex', alignItems: 'center', gap: '.6rem', marginBottom: '1rem' }}>
-              <span style={{ width: 28, height: 2, background: 'var(--orange)', display: 'inline-block' }} />
+            <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '.75rem', fontWeight: 700, letterSpacing: '.15em', textTransform: 'uppercase', color: 'var(--color-primary)', display: 'flex', alignItems: 'center', gap: '.6rem', marginBottom: '1rem' }}>
+              <span style={{ width: 28, height: 2, background: 'var(--color-primary)', display: 'inline-block' }} />
               Formulario
             </div>
-            <h2 style={{ fontFamily: 'Bebas Neue, sans-serif', fontSize: 'clamp(2.5rem,5vw,4rem)', lineHeight: 1, color: 'white', marginBottom: '1.5rem' }}>Escríbenos</h2>
-            <p style={{ color: 'rgba(255,255,255,.5)', marginBottom: '2rem', fontSize: '.9rem' }}>Usa el siguiente formulario y contáctanos para cualquier solicitud especial, consulta, o duda.</p>
+            <h2 style={{ fontFamily: 'Montserrat, sans-serif', fontWeight: 800, fontSize: 'clamp(2.5rem,5vw,4rem)', lineHeight: 1, color: 'var(--color-dark)', marginBottom: '1.5rem' }}>Escríbenos</h2>
+            <p style={{ fontFamily: 'Inter, sans-serif', color: 'var(--color-muted)', marginBottom: '2rem', fontSize: '.9rem' }}>Usa el siguiente formulario y contáctanos para cualquier solicitud especial, consulta, o duda.</p>
 
             {sent ? (
-              <div style={{ background: 'rgba(26,47,168,.2)', border: '1px solid var(--blue)', padding: '1rem 1.5rem', color: 'white', fontSize: '.9rem' }}>
+              <div style={{ background: 'rgba(26,47,168,0.08)', border: '1px solid var(--color-primary)', padding: '1rem 1.5rem', color: 'var(--color-dark)', fontFamily: 'Inter, sans-serif', fontSize: '.9rem', borderRadius: 6 }}>
                 ✔ ¡Gracias por escribirnos! Te contactaremos pronto.
               </div>
             ) : (
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-                  <div><label style={labelStyle}>Nombre</label><input style={fieldStyle} placeholder="Tu nombre" value={form.nombre} onChange={set('nombre')} /></div>
-                  <div><label style={labelStyle}>Apellido</label><input style={fieldStyle} placeholder="Tu apellido" value={form.apellido} onChange={set('apellido')} /></div>
+                <div className="form-row-inner" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                  <div><label style={labelStyle}>Nombre</label><input style={fieldStyle} onFocus={focusField} onBlur={blurField} placeholder="Tu nombre" value={form.nombre} onChange={set('nombre')} /></div>
+                  <div><label style={labelStyle}>Apellido</label><input style={fieldStyle} onFocus={focusField} onBlur={blurField} placeholder="Tu apellido" value={form.apellido} onChange={set('apellido')} /></div>
                 </div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-                  <div><label style={labelStyle}>Email *</label><input type="email" style={fieldStyle} placeholder="correo@empresa.com" value={form.email} onChange={set('email')} /></div>
-                  <div><label style={labelStyle}>Teléfono</label><input type="tel" style={fieldStyle} placeholder="+57 300 000 0000" value={form.tel} onChange={set('tel')} /></div>
+                <div className="form-row-inner" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                  <div><label style={labelStyle}>Email *</label><input type="email" style={fieldStyle} onFocus={focusField} onBlur={blurField} placeholder="correo@empresa.com" value={form.email} onChange={set('email')} /></div>
+                  <div><label style={labelStyle}>Teléfono</label><input type="tel" style={fieldStyle} onFocus={focusField} onBlur={blurField} placeholder="+57 300 000 0000" value={form.tel} onChange={set('tel')} /></div>
                 </div>
-                <div><label style={labelStyle}>Mensaje</label><textarea style={{ ...fieldStyle, resize: 'vertical', minHeight: 100 }} placeholder="Escribe tu mensaje aquí..." value={form.msg} onChange={set('msg')} /></div>
+                <div><label style={labelStyle}>Mensaje</label><textarea style={{ ...fieldStyle, resize: 'vertical', minHeight: 100 }} onFocus={focusField} onBlur={blurField} placeholder="Escribe tu mensaje aquí..." value={form.msg} onChange={set('msg')} /></div>
                 <button
                   onClick={submit}
                   disabled={sending}
                   style={{
-                    background: 'var(--orange)', color: 'white', border: 'none',
-                    padding: '1rem 2.5rem', fontFamily: 'DM Sans, sans-serif',
-                    fontSize: '.95rem', fontWeight: 700, letterSpacing: '.06em',
+                    background: 'var(--color-primary)', color: 'white', border: 'none',
+                    borderRadius: 6, padding: '1rem 2.5rem', fontFamily: 'Inter, sans-serif',
+                    fontSize: '.95rem', fontWeight: 700, letterSpacing: '.02em',
                     cursor: 'pointer', alignSelf: 'flex-start',
                     transition: 'background .2s, transform .15s',
                     opacity: sending ? .7 : 1,
                   }}
-                  onMouseEnter={e => { e.currentTarget.style.background = 'var(--red)'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
-                  onMouseLeave={e => { e.currentTarget.style.background = 'var(--orange)'; e.currentTarget.style.transform = 'none'; }}
+                  onMouseEnter={e => { e.currentTarget.style.background = 'var(--color-primary-hover)'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
+                  onMouseLeave={e => { e.currentTarget.style.background = 'var(--color-primary)'; e.currentTarget.style.transform = 'none'; }}
                 >
                   {sending ? 'ENVIANDO...' : 'ENVIAR'}
                 </button>

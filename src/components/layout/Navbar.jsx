@@ -10,13 +10,11 @@ const links = [
 ];
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState('#inicio');
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
-      setScrolled(window.scrollY > 10);
       const sections = document.querySelectorAll('section[id]');
       let cur = '#inicio';
       sections.forEach(s => {
@@ -31,19 +29,17 @@ export default function Navbar() {
   return (
     <motion.nav
       style={{
-        position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
+        position: 'sticky', top: 0, left: 0, right: 0, zIndex: 100,
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
         padding: '0 2.5rem',
         height: 64,
-        background: 'rgba(14,14,20,.92)',
-        backdropFilter: 'blur(12px)',
-        borderBottom: scrolled ? '1px solid var(--orange)' : '1px solid rgba(255,255,255,.08)',
-        boxShadow: scrolled ? '0 4px 24px rgba(0,0,0,.35)' : 'none',
-        transition: 'border-color .3s, box-shadow .3s',
+        background: 'var(--color-white)',
+        borderBottom: '2px solid var(--color-primary)',
+        boxShadow: '0 2px 8px rgba(26,47,168,0.08)',
       }}
     >
-      <a href="#inicio" style={{ display: 'flex', alignItems: 'center', gap: '.7rem', textDecoration: 'none' }}>
-        <img src="/logo.jpeg" alt="Plasfilm S.A.S." style={{ height: 44, objectFit: 'contain' }} />
+      <a href="#inicio" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+        <img src="/logo.jpeg" alt="Plasfilm S.A.S." style={{ height: 48, objectFit: 'contain' }} />
       </a>
 
       <ul style={{ display: 'flex', gap: '2rem', listStyle: 'none', margin: 0, padding: 0 }} className="nav-desktop">
@@ -52,8 +48,8 @@ export default function Navbar() {
             <a
               href={href}
               style={{
-                textDecoration: 'none', fontSize: '.9rem', fontWeight: 500,
-                color: active === href ? 'var(--orange)' : 'rgba(255,255,255,.8)',
+                textDecoration: 'none', fontFamily: 'Inter, sans-serif', fontSize: '.9rem', fontWeight: 500,
+                color: active === href ? 'var(--color-primary)' : 'var(--color-dark)',
                 position: 'relative', paddingBottom: 2,
                 transition: 'color .2s',
               }}
@@ -64,7 +60,7 @@ export default function Navbar() {
                   layoutId="nav-underline"
                   style={{
                     position: 'absolute', bottom: -2, left: 0, right: 0,
-                    height: 2, background: 'var(--orange)',
+                    height: 2, background: 'var(--color-primary)',
                   }}
                 />
               )}
@@ -74,16 +70,16 @@ export default function Navbar() {
       </ul>
 
       <a href="#reserva" style={{
-        background: 'var(--orange)', color: 'white',
-        padding: '.55rem 1.3rem', fontFamily: 'DM Sans, sans-serif',
-        fontSize: '.88rem', fontWeight: 700, letterSpacing: '.04em',
+        background: 'var(--color-primary)', color: 'var(--color-white)',
+        borderRadius: 6, padding: '10px 20px', fontFamily: 'Inter, sans-serif',
+        fontSize: '.88rem', fontWeight: 600,
         textDecoration: 'none', transition: 'background .2s',
       }}
-        onMouseEnter={e => e.currentTarget.style.background = 'var(--red)'}
-        onMouseLeave={e => e.currentTarget.style.background = 'var(--orange)'}
+        onMouseEnter={e => e.currentTarget.style.background = 'var(--color-primary-hover)'}
+        onMouseLeave={e => e.currentTarget.style.background = 'var(--color-primary)'}
         className="nav-cta-desktop"
       >
-        Reserva ahora
+        Cotizar
       </a>
 
       <button
@@ -95,9 +91,9 @@ export default function Navbar() {
           cursor: 'pointer', background: 'none', border: 'none', padding: 4,
         }}
       >
-        <motion.span animate={open ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }} style={{ display: 'block', width: 24, height: 2, background: 'rgba(255,255,255,.8)' }} />
-        <motion.span animate={open ? { opacity: 0 } : { opacity: 1 }} style={{ display: 'block', width: 24, height: 2, background: 'rgba(255,255,255,.8)' }} />
-        <motion.span animate={open ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }} style={{ display: 'block', width: 24, height: 2, background: 'rgba(255,255,255,.8)' }} />
+        <motion.span animate={open ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }} style={{ display: 'block', width: 24, height: 2, background: 'var(--color-dark)' }} />
+        <motion.span animate={open ? { opacity: 0 } : { opacity: 1 }} style={{ display: 'block', width: 24, height: 2, background: 'var(--color-dark)' }} />
+        <motion.span animate={open ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }} style={{ display: 'block', width: 24, height: 2, background: 'var(--color-dark)' }} />
       </button>
 
       <AnimatePresence>
@@ -108,8 +104,8 @@ export default function Navbar() {
             exit={{ opacity: 0, y: -8 }}
             style={{
               position: 'absolute', top: 64, left: 0, right: 0,
-              background: 'rgba(14,14,20,.97)',
-              borderBottom: '1px solid rgba(255,255,255,.08)',
+              background: 'var(--color-white)',
+              borderBottom: '1px solid var(--color-border)',
               padding: '1.5rem 2rem',
               display: 'flex', flexDirection: 'column', gap: '1.2rem',
             }}
@@ -118,8 +114,8 @@ export default function Navbar() {
             {links.map(({ href, label }) => (
               <a key={href} href={href} onClick={() => setOpen(false)}
                 style={{
-                  color: active === href ? 'var(--orange)' : 'rgba(255,255,255,.8)',
-                  textDecoration: 'none', fontWeight: 500, fontSize: '1rem',
+                  color: active === href ? 'var(--color-primary)' : 'var(--color-dark)',
+                  textDecoration: 'none', fontFamily: 'Inter, sans-serif', fontWeight: 500, fontSize: '1rem',
                 }}
               >
                 {label}

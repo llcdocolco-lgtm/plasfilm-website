@@ -1,11 +1,11 @@
 import LegalLayout from '../components/ui/LegalLayout';
 
 const S = {
-  h2: { fontFamily: 'Bebas Neue, sans-serif', fontSize: '1.7rem', color: 'var(--orange)', letterSpacing: '.04em', margin: '2.5rem 0 .8rem' },
-  p: { color: 'var(--muted)', lineHeight: 1.85, fontSize: '.96rem', marginBottom: '.9rem' },
-  ul: { color: 'var(--muted)', lineHeight: 1.85, fontSize: '.96rem', paddingLeft: '1.4rem', marginBottom: '.9rem' },
-  tag: { display: 'inline-block', background: 'rgba(26,47,168,.08)', border: '1px solid rgba(26,47,168,.2)', color: 'var(--blue)', fontSize: '.75rem', fontWeight: 700, letterSpacing: '.08em', textTransform: 'uppercase', padding: '.2rem .7rem', marginBottom: '1.5rem' },
-  divider: { border: 'none', borderTop: '1px solid var(--mid)', margin: '2rem 0' },
+  h2: { fontFamily: 'Montserrat, sans-serif', fontWeight: 800, fontSize: '1.7rem', color: 'var(--color-dark)', margin: '2.5rem 0 .8rem' },
+  p: { fontFamily: 'Inter, sans-serif', color: 'var(--color-dark)', lineHeight: 1.85, fontSize: '.96rem', marginBottom: '.9rem' },
+  ul: { fontFamily: 'Inter, sans-serif', color: 'var(--color-dark)', lineHeight: 1.85, fontSize: '.96rem', paddingLeft: '1.4rem', marginBottom: '.9rem' },
+  tag: { display: 'inline-block', background: 'rgba(26,47,168,0.08)', border: '1px solid rgba(26,47,168,0.2)', color: 'var(--color-primary)', fontFamily: 'Inter, sans-serif', fontSize: '.75rem', fontWeight: 700, letterSpacing: '.08em', textTransform: 'uppercase', padding: '.2rem .7rem', marginBottom: '1.5rem' },
+  divider: { border: 'none', borderTop: '1px solid var(--color-border)', margin: '2rem 0' },
 };
 
 export default function TerminosCondiciones() {
@@ -56,7 +56,7 @@ export default function TerminosCondiciones() {
       <p style={S.p}>Los presentes términos se rigen por las leyes de la República de Colombia. Para cualquier controversia derivada del uso del sitio, las partes se someten a la jurisdicción de los jueces competentes de la ciudad de Bogotá D.C., renunciando expresamente a cualquier otro fuero que pudiera corresponderles.</p>
 
       <h2 style={S.h2}>10. Contacto</h2>
-      <p style={S.p}>Para consultas sobre estos términos, comuníquese a <a href="mailto:plasfilmsas@gmail.com" style={{ color: 'var(--orange)', textDecoration: 'none' }}>plasfilmsas@gmail.com</a>.</p>
+      <p style={S.p}>Para consultas sobre estos términos, comuníquese a <a href="mailto:plasfilmsas@gmail.com" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>plasfilmsas@gmail.com</a>.</p>
     </LegalLayout>
   );
 }

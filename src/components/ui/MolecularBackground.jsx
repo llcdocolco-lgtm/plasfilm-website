@@ -7,8 +7,7 @@ const PALETTE = [
   '255,255,255',
   '255,255,255',
   '255,255,255',
-  '240,90,34',
-  '120,160,255',
+  '209,46,46',
 ];
 
 export default function MolecularBackground({ count = 70, linkDist = 120, opacity = 1 }) {
@@ -65,7 +64,7 @@ export default function MolecularBackground({ count = 70, linkDist = 120, opacit
             ctx.beginPath();
             ctx.moveTo(pi.x, pi.y);
             ctx.lineTo(pj.x, pj.y);
-            ctx.strokeStyle = `rgba(180,200,255,${lineA})`;
+            ctx.strokeStyle = `rgba(255,255,255,${lineA})`;
             ctx.lineWidth = 0.65;
             ctx.stroke();
           }

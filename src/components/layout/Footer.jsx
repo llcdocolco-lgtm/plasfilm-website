@@ -15,22 +15,22 @@ const legalLinks = [
   { to: '/envios-y-devoluciones', label: 'Envíos y Devoluciones' },
 ];
 
-const linkStyle = { color: 'rgba(255,255,255,.45)', fontSize: '.85rem', textDecoration: 'none', transition: 'color .2s' };
-const legalLinkStyle = { color: 'rgba(255,255,255,.35)', fontSize: '.8rem', textDecoration: 'none', transition: 'color .2s' };
+const linkStyle = { color: 'rgba(255,255,255,0.6)', fontFamily: 'Inter, sans-serif', fontSize: '.85rem', textDecoration: 'none', transition: 'color .2s' };
+const legalLinkStyle = { color: 'rgba(255,255,255,0.6)', fontFamily: 'Inter, sans-serif', fontSize: '.8rem', textDecoration: 'none', transition: 'color .2s' };
 
 export default function Footer() {
   return (
-    <footer style={{ background: 'var(--dark)', borderTop: '1px solid rgba(255,255,255,.06)', padding: '3rem 2rem 1.5rem', position: 'relative', overflow: 'hidden' }}>
+    <footer style={{ background: 'var(--color-dark)', color: 'rgba(255,255,255,0.7)', borderTop: '4px solid var(--color-primary)', padding: '3rem 2rem 1.5rem', position: 'relative', overflow: 'hidden' }}>
       <MolecularBackground count={35} linkDist={100} opacity={0.28} />
       <div style={{ maxWidth: 1100, margin: '0 auto', position: 'relative' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '2rem', flexWrap: 'wrap', gap: '2rem' }}>
 
           {/* Logo + redes */}
           <div>
-            <a href="#inicio" style={{ display: 'inline-block', marginBottom: '.5rem' }}>
-              <img src="/logo.jpeg" alt="Plasfilm S.A.S." style={{ height: 48, objectFit: 'contain' }} />
+            <a href="#inicio" style={{ display: 'inline-block', marginBottom: '.5rem', textDecoration: 'none', background: 'white', borderRadius: 8, padding: '.4rem .6rem' }}>
+              <img src="/logo.jpeg" alt="Plasfilm S.A.S." style={{ height: 40, objectFit: 'contain', display: 'block' }} />
             </a>
-            <div style={{ color: 'rgba(255,255,255,.35)', fontSize: '.82rem', marginTop: '.3rem' }}>
+            <div style={{ color: 'rgba(255,255,255,0.6)', fontFamily: 'Inter, sans-serif', fontSize: '.82rem', marginTop: '.6rem' }}>
               Insumos químicos para la industria plástica · Bogotá, Colombia
             </div>
             <div style={{ display: 'flex', gap: '.8rem', marginTop: '1rem' }}>
@@ -41,9 +41,9 @@ export default function Footer() {
                 { href: 'mailto:plasfilmsas@gmail.com', label: 'Email', icon: <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg> },
               ].map(({ href, label, icon }) => (
                 <a key={label} href={href} aria-label={label} target={href.startsWith('http') ? '_blank' : undefined} rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  style={{ width: 36, height: 36, border: '1px solid rgba(255,255,255,.2)', display: 'grid', placeItems: 'center', color: 'white', textDecoration: 'none', transition: 'border-color .2s, background .2s' }}
-                  onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--orange)'; e.currentTarget.style.background = 'var(--orange)'; }}
-                  onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,.2)'; e.currentTarget.style.background = 'transparent'; }}
+                  style={{ width: 36, height: 36, border: '1px solid rgba(255,255,255,0.2)', display: 'grid', placeItems: 'center', color: 'rgba(255,255,255,0.7)', textDecoration: 'none', transition: 'border-color .2s, background .2s' }}
+                  onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--color-primary)'; e.currentTarget.style.background = 'var(--color-primary)'; }}
+                  onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)'; e.currentTarget.style.background = 'transparent'; }}
                 >{icon}</a>
               ))}
             </div>
@@ -51,31 +51,37 @@ export default function Footer() {
 
           {/* Navegación principal */}
           <nav aria-label="Navegación footer" style={{ display: 'flex', flexDirection: 'column', gap: '.6rem' }}>
-            <div style={{ fontSize: '.7rem', fontWeight: 700, letterSpacing: '.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,.25)', marginBottom: '.3rem' }}>Navegación</div>
+            <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '.7rem', fontWeight: 700, letterSpacing: '.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', marginBottom: '.3rem' }}>Navegación</div>
             {navLinks.map(({ href, label }) => (
               <a key={href} href={href} style={linkStyle}
                 onMouseEnter={e => e.currentTarget.style.color = 'white'}
-                onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,.45)'}
+                onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.6)'}
               >{label}</a>
             ))}
           </nav>
 
           {/* Legal */}
           <nav aria-label="Legal" style={{ display: 'flex', flexDirection: 'column', gap: '.6rem' }}>
-            <div style={{ fontSize: '.7rem', fontWeight: 700, letterSpacing: '.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,.25)', marginBottom: '.3rem' }}>Legal</div>
+            <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '.7rem', fontWeight: 700, letterSpacing: '.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', marginBottom: '.3rem' }}>Legal</div>
             {legalLinks.map(({ to, label }) => (
               <Link key={to} to={to} style={legalLinkStyle}
-                onMouseEnter={e => e.currentTarget.style.color = 'var(--orange)'}
-                onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,.35)'}
+                onMouseEnter={e => e.currentTarget.style.color = 'white'}
+                onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.6)'}
               >{label}</Link>
             ))}
           </nav>
 
         </div>
 
-        <div style={{ borderTop: '1px solid rgba(255,255,255,.06)', paddingTop: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
-          <span style={{ fontSize: '.8rem', color: 'rgba(255,255,255,.3)' }}>© 2026 Plasfilm S.A.S. Todos los derechos reservados.</span>
-          <span style={{ fontSize: '.8rem', color: 'rgba(255,255,255,.3)' }}>plasfilmsas@gmail.com</span>
+        <p style={{
+          fontFamily: 'Inter, sans-serif', fontSize: 12, color: 'rgba(255,255,255,0.4)',
+          borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: 12, marginBottom: '1rem',
+        }}>
+          Plasfilm S.A.S. es una empresa vinculada a Docolco LLC (Estados Unidos).
+        </p>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
+          <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 12, color: 'rgba(255,255,255,0.4)' }}>© 2026 Plasfilm S.A.S. Todos los derechos reservados.</span>
+          <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 12, color: 'rgba(255,255,255,0.4)' }}>plasfilmsas@gmail.com</span>
         </div>
       </div>
     </footer>

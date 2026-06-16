@@ -13,16 +13,15 @@ export default function FilterBar({ active, onChange }) {
           key={key}
           onClick={() => onChange(key)}
           style={{
-            border: active === key ? '1.5px solid var(--blue)' : '1.5px solid var(--mid)',
-            background: active === key ? 'var(--blue)' : 'transparent',
-            color: active === key ? 'white' : 'var(--muted)',
+            border: active === key ? '1.5px solid var(--color-primary)' : '1.5px solid var(--color-border)',
+            background: active === key ? 'var(--color-primary)' : 'var(--color-bg-light)',
+            color: active === key ? 'white' : 'var(--color-muted)',
+            borderRadius: 20,
             padding: '.45rem 1.1rem',
-            fontFamily: 'DM Sans, sans-serif', fontSize: '.82rem',
-            fontWeight: 600, letterSpacing: '.05em', textTransform: 'uppercase',
+            fontFamily: 'Inter, sans-serif', fontSize: '.82rem',
+            fontWeight: 600, letterSpacing: '.02em',
             cursor: 'pointer', transition: '.2s',
           }}
-          onMouseEnter={e => { if (active !== key) { e.currentTarget.style.background = 'var(--blue)'; e.currentTarget.style.borderColor = 'var(--blue)'; e.currentTarget.style.color = 'white'; } }}
-          onMouseLeave={e => { if (active !== key) { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.borderColor = 'var(--mid)'; e.currentTarget.style.color = 'var(--muted)'; } }}
         >
           {label}
         </button>

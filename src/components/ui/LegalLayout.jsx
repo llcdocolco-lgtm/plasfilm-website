@@ -1,47 +1,41 @@
 import { Link } from 'react-router-dom';
 import Navbar from '../layout/Navbar';
 import Footer from '../layout/Footer';
-import MolecularBackground from './MolecularBackground';
-import AuroraBackground from './AuroraBackground';
 
 export default function LegalLayout({ title, subtitle, children }) {
   return (
     <>
       <Navbar />
-      {/* Hero oscuro con molecular */}
       <section style={{
-        background: 'var(--dark)', paddingTop: 64,
+        background: 'var(--color-bg-light)',
         position: 'relative', overflow: 'hidden',
         minHeight: 220, display: 'flex', alignItems: 'center',
       }}>
-        <MolecularBackground count={50} linkDist={110} opacity={0.45} />
         <div style={{ maxWidth: 1100, margin: '0 auto', padding: '3rem 2rem', position: 'relative' }}>
           <Link to="/" style={{
             display: 'inline-flex', alignItems: 'center', gap: '.5rem',
-            color: 'rgba(255,255,255,.5)', fontSize: '.8rem',
+            color: 'var(--color-muted)', fontFamily: 'Inter, sans-serif', fontSize: '.8rem',
             textDecoration: 'none', marginBottom: '1.2rem',
             transition: 'color .2s',
           }}
-            onMouseEnter={e => e.currentTarget.style.color = 'var(--orange)'}
-            onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,.5)'}
+            onMouseEnter={e => e.currentTarget.style.color = 'var(--color-primary)'}
+            onMouseLeave={e => e.currentTarget.style.color = 'var(--color-muted)'}
           >
             ← Volver al inicio
           </Link>
           <h1 style={{
-            fontFamily: 'Bebas Neue, sans-serif',
+            fontFamily: 'Montserrat, sans-serif', fontWeight: 800,
             fontSize: 'clamp(2.5rem,5vw,4rem)',
-            color: 'white', lineHeight: 1,
-            letterSpacing: '.02em', marginBottom: '.6rem',
+            color: 'var(--color-dark)', lineHeight: 1,
+            marginBottom: '.6rem',
           }}>{title}</h1>
           {subtitle && (
-            <p style={{ color: 'rgba(255,255,255,.45)', fontSize: '.9rem' }}>{subtitle}</p>
+            <p style={{ fontFamily: 'Inter, sans-serif', color: 'var(--color-muted)', fontSize: '.9rem' }}>{subtitle}</p>
           )}
         </div>
       </section>
 
-      {/* Contenido con aurora */}
-      <section style={{ background: 'var(--white)', position: 'relative', overflow: 'hidden' }}>
-        <AuroraBackground />
+      <section style={{ background: 'var(--color-bg-light)', position: 'relative', overflow: 'hidden' }}>
         <div style={{ maxWidth: 820, margin: '0 auto', padding: '4rem 2rem 5rem', position: 'relative' }}>
           {children}
         </div>
