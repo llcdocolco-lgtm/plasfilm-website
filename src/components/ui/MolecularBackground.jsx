@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 
 function rand(a, b) { return a + Math.random() * (b - a); }
 
-const PALETTE = [
+const DEFAULT_PALETTE = [
   '255,255,255',
   '255,255,255',
   '255,255,255',
@@ -10,7 +10,7 @@ const PALETTE = [
   '209,46,46',
 ];
 
-export default function MolecularBackground({ count = 70, linkDist = 120, opacity = 1 }) {
+export default function MolecularBackground({ count = 70, linkDist = 120, opacity = 1, palette = DEFAULT_PALETTE, lineColor }) {
   const ref = useRef(null);
 
   useEffect(() => {
@@ -32,7 +32,7 @@ export default function MolecularBackground({ count = 70, linkDist = 120, opacit
         vx: rand(-0.18, 0.18),
         vy: rand(-0.18, 0.18),
         r: rand(1.5, 3.8),
-        color: PALETTE[Math.floor(Math.random() * PALETTE.length)],
+        color: palette[Math.floor(Math.random() * palette.length)],
         a: rand(0.4, 0.8),
         phase: rand(0, Math.PI * 2),
         spd: rand(0.006, 0.016),
@@ -64,7 +64,7 @@ export default function MolecularBackground({ count = 70, linkDist = 120, opacit
             ctx.beginPath();
             ctx.moveTo(pi.x, pi.y);
             ctx.lineTo(pj.x, pj.y);
-            ctx.strokeStyle = `rgba(255,255,255,${lineA})`;
+            ctx.strokeStyle = `rgba(${lineColor || '255,255,255'},${lineA})`;
             ctx.lineWidth = 0.65;
             ctx.stroke();
           }
@@ -101,7 +101,7 @@ export default function MolecularBackground({ count = 70, linkDist = 120, opacit
     ro.observe(canvas.parentElement);
 
     return () => { cancelAnimationFrame(raf); ro.disconnect(); };
-  }, [count, linkDist]);
+  }, [count, linkDist, palette, lineColor]);
 
   return (
     <canvas
