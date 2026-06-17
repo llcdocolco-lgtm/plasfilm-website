@@ -54,7 +54,7 @@ export default function Reserva() {
   ];
 
   return (
-    <section id="reserva" style={{ background: 'var(--color-bg-light)', scrollMarginTop: 64, position: 'relative', overflow: 'hidden' }}>
+    <section id="reserva" style={{ background: 'var(--color-bg-light)', scrollMarginTop: 72, position: 'relative', overflow: 'hidden' }}>
       <div style={{ position: 'absolute', inset: 0, zIndex: 0, opacity: 0.4, pointerEvents: 'none' }}>
         <BackgroundPaths title="" />
       </div>

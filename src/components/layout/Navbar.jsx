@@ -32,14 +32,14 @@ export default function Navbar() {
         position: 'sticky', top: 0, left: 0, right: 0, zIndex: 100,
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
         padding: '0 2.5rem',
-        height: 64,
+        height: 72,
         background: 'var(--color-white)',
         borderBottom: '2px solid var(--color-primary)',
         boxShadow: '0 2px 8px rgba(26,47,168,0.08)',
       }}
     >
       <a href="#inicio" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
-        <img src="/logo.png" alt="Plasfilm S.A.S." style={{ height: 48, objectFit: 'contain' }} />
+        <img src="/logo.png" alt="Plasfilm S.A.S." style={{ height: 62, objectFit: 'contain' }} />
       </a>
 
       <ul style={{ display: 'flex', gap: '2rem', listStyle: 'none', margin: 0, padding: 0 }} className="nav-desktop">
@@ -103,7 +103,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             style={{
-              position: 'absolute', top: 64, left: 0, right: 0,
+              position: 'absolute', top: 72, left: 0, right: 0,
               background: 'var(--color-white)',
               borderBottom: '1px solid var(--color-border)',
               padding: '1.5rem 2rem',

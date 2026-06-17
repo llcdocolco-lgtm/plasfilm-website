@@ -48,7 +48,7 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contacto" style={{ background: 'var(--color-white)', scrollMarginTop: 64, position: 'relative', overflow: 'hidden' }}>
+    <section id="contacto" style={{ background: 'var(--color-white)', scrollMarginTop: 72, position: 'relative', overflow: 'hidden' }}>
       <div style={{ position: 'absolute', inset: 0, zIndex: 0, opacity: 0.28, pointerEvents: 'none' }}>
         <SmokeBackground smokeColor="#1A2FA8" />
       </div>

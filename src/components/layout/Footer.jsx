@@ -28,7 +28,7 @@ export default function Footer() {
           {/* Logo + redes */}
           <div>
             <a href="#inicio" style={{ display: 'inline-block', marginBottom: '.5rem', textDecoration: 'none' }}>
-              <img src="/logo.png" alt="Plasfilm S.A.S." style={{ height: 40, objectFit: 'contain', display: 'block' }} />
+              <img src="/logo.jpeg" alt="Plasfilm S.A.S." style={{ height: 40, objectFit: 'contain', display: 'block' }} />
             </a>
             <div style={{ color: 'rgba(255,255,255,0.6)', fontFamily: 'Inter, sans-serif', fontSize: '.82rem', marginTop: '.6rem' }}>
               Insumos químicos para la industria plástica · Bogotá, Colombia

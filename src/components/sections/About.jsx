@@ -8,7 +8,7 @@ export default function About() {
   const ref = useScrollReveal();
 
   return (
-    <section id="acerca" style={{ background: 'var(--color-bg-light)', scrollMarginTop: 64, position: 'relative', overflow: 'hidden' }}>
+    <section id="acerca" style={{ background: 'var(--color-bg-light)', scrollMarginTop: 72, position: 'relative', overflow: 'hidden' }}>
       <div style={{ position: 'absolute', inset: 0, zIndex: 0, opacity: 0.35, pointerEvents: 'none' }}>
         <SmokeBackground smokeColor="#1A2FA8" />
       </div>

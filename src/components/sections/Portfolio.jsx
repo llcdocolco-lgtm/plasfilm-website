@@ -14,7 +14,7 @@ export default function Portfolio() {
   const filtered = filter === 'all' ? products : products.filter(p => p.cat === filter);
 
   return (
-    <section id="portafolio" style={{ background: 'var(--color-dark)', scrollMarginTop: 64, position: 'relative', overflow: 'hidden' }}>
+    <section id="portafolio" style={{ background: 'var(--color-dark)', scrollMarginTop: 72, position: 'relative', overflow: 'hidden' }}>
       <div style={{ position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none' }}>
         <MolecularBackground count={35} linkDist={100} opacity={0.28} />
       </div>
