@@ -39,7 +39,7 @@ export default function Navbar() {
       }}
     >
       <a href="#inicio" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
-        <img src="/logo.jpeg" alt="Plasfilm S.A.S." style={{ height: 48, objectFit: 'contain' }} />
+        <img src="/logo.png" alt="Plasfilm S.A.S." style={{ height: 48, objectFit: 'contain' }} />
       </a>
 
       <ul style={{ display: 'flex', gap: '2rem', listStyle: 'none', margin: 0, padding: 0 }} className="nav-desktop">

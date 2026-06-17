@@ -28,7 +28,7 @@ export default function About() {
             }}
           >
             <img
-              src="/logo.jpeg"
+              src="/logo.png"
               alt="Plasfilm S.A.S."
               style={{ width: '100%', maxWidth: 200, objectFit: 'contain', display: 'block' }}
             />
