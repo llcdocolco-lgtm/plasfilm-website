@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 export default function WhatsAppFAB() {
   return (
     <motion.a
-      href="https://wa.me/573000000000"
+      href="https://wa.me/573503968631"
       target="_blank"
       rel="noopener noreferrer"
       aria-label="WhatsApp"
